@@ -6,6 +6,7 @@
         <today> </today>
       </section>
       <section class="dashboard">
+        <Navbar> </Navbar>
         <Week> </Week>
         <highlights> </highlights>
       </section>
@@ -14,16 +15,18 @@
 </template>
 
 <script>
-import Search from "./Search.vue";
-import Today from "./Today.vue";
-import Week from "./Week.vue";
-import Highlights from "./Highlights.vue";
+import Search from "./Today/Search.vue";
+import Today from "./Today/Today.vue";
+import Navbar from "./Dashboard/Navbar.vue";
+import Week from "./Dashboard/Week.vue";
+import Highlights from "./Dashboard/Highlights.vue";
 
 export default {
   name: "Home",
   components: {
     Search,
     Today,
+    Navbar,
     Week,
     Highlights,
   },
@@ -48,15 +51,16 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid black;
+  background-color: #f0b3cc;
   flex: 1;
 }
 
 .dashboard {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid black;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #f6f6f8;
   flex: 2.5;
 }
 </style>

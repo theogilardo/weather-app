@@ -3,7 +3,7 @@
     <div class="current-day">
       <img
         class="current-day__weather-icon"
-        src="../assets/logo.png"
+        src="../../assets/logo.png"
         alt="Weather icon"
       />
       <h1 class="current-day__temperature">12°C</h1>
