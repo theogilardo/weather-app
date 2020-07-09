@@ -14,6 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +23,7 @@ export default {
   border: none;
   background-color: white;
   border-radius: 10px;
-  margin: 0 0.2rem;
+  margin: 0 0.4rem;
   text-align: center;
 }
 

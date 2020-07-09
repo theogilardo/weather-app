@@ -51,7 +51,8 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #f0b3cc;
+  background-color: #323131;
+  color: white;
   flex: 1;
 }
 

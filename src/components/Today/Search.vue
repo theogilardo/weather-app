@@ -25,12 +25,12 @@ export default {
 
 <style lang="scss" scoped>
 .search {
-  padding: 1rem;
+  padding: 1.5rem 0;
   position: relative;
   width: 100%;
 
   &__input {
-    padding: 0.5rem;
+    padding: 0.5rem 3.5rem;
     border: none;
     border-radius: 10px;
 
