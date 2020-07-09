@@ -41,7 +41,8 @@ export default {
   display: flex;
   background-color: #eee;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 25px;
+  overflow: hidden;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -49,7 +50,6 @@ export default {
 .current-day {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: #f0b3cc;
   flex: 1;

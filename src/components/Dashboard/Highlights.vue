@@ -26,7 +26,6 @@ export default {
 <style lang="scss" scoped>
 .highlights-container {
   margin-top: 2rem;
-  // align-self: flex-start;
 
   &__title {
     font-size: 1.6rem;
@@ -37,7 +36,7 @@ export default {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4px;
+    grid-gap: 1rem;
     justify-content: center;
     align-items: center;
   }

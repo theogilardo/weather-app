@@ -21,7 +21,7 @@ export default {
   padding: 1rem;
   border: none;
   background-color: white;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 0 0.2rem;
   text-align: center;
 }
