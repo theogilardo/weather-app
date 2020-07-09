@@ -2,7 +2,7 @@
   <div class="card">
     <h1>Mon</h1>
     <img src="../../assets/sun.png" alt="weather icon" />
-    <p>15°C <span>5°C</span></p>
+    <p>15°C <span> 5°C</span></p>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ img {
 }
 
 span {
-  color: rgb(122, 122, 122);
+  color: rgb(158, 158, 158);
 }
 
 p {

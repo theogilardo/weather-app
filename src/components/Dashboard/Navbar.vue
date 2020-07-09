@@ -19,6 +19,7 @@ export default {
 .navbar {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgb(219, 219, 219);
 

@@ -1,25 +1,24 @@
 <template>
   <div>
-    <div class="search">
-      <a href="#">
-        <img
-          src="../../assets/search.svg"
-          class="search__icon"
-          alt="Search icon"
-        />
-      </a>
+    <form class="search">
+      <button @click="fetchweather()" class="search__btn">
+        Search
+      </button>
       <input
         class="search__input"
         type="text"
         placeholder="Type city here..."
       />
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
   name: "Search",
+  mounted() {
+    this.$store.dispatch("fetchCityWeather");
+  },
 };
 </script>
 
@@ -39,12 +38,20 @@ export default {
     }
   }
 
-  &__icon {
+  &__btn {
     position: absolute;
     top: 50%;
-    right: 15%;
+    right: 2%;
     transform: translateY(-50%);
-    width: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>

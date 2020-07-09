@@ -6,7 +6,7 @@
       src="../../assets/sun.png"
       alt="Weather icon"
     />
-    <h1 class="current-day__temperature">12°C</h1>
+    <h1 class="current-day__temperature">{{ cityWeather.temperature }} °C</h1>
     <h2 class="current-day__date">
       Monday,
       <span class="current-day__time">16:00</span>
@@ -23,6 +23,12 @@
 <script>
 export default {
   name: "Today",
+
+  computed: {
+    cityWeather() {
+      return this.$store.getters.cityWeather;
+    },
+  },
 };
 </script>
 
