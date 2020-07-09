@@ -7,8 +7,6 @@
       <day></day>
       <day></day>
       <day></day>
-      <day></day>
-      <day></day>
     </div>
   </div>
 </template>

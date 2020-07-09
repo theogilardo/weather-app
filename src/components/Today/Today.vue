@@ -1,23 +1,27 @@
 <template>
-  <!-- <div> -->
   <div class="current-day">
+    <!-- src="../../assets/sun.png" -->
     <img
       class="current-day__weather-icon"
-      src="../../assets/sun.png"
+      :src="`${cityWeather.icon}`"
       alt="Weather icon"
     />
-    <h1 class="current-day__temperature">{{ cityWeather.temperature }} °C</h1>
+    <h1 class="current-day__temperature">
+      {{ cityWeather.temperature.main }} °C
+    </h1>
     <h2 class="current-day__date">
-      Monday,
-      <span class="current-day__time">16:00</span>
+      {{ currentTime }}
     </h2>
-    <p class="current-day__information">Mostly Cloudy</p>
-    <p class="current-day__information">Rain - 30%</p>
+    <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
+    <p class="current-day__information">
+      {{ cityWeather.highlight.description }}
+    </p>
     <div class="current-day__city">
-      <h2 class="current-day__city__name">NYC, USA</h2>
+      <h2 class="current-day__city__name">
+        {{ cityWeather.location.name }} ({{ cityWeather.location.country }})
+      </h2>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -27,6 +31,19 @@ export default {
   computed: {
     cityWeather() {
       return this.$store.getters.cityWeather;
+    },
+    currentTime() {
+      const days = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ];
+      let today = new Date().getDay();
+      return days[today - 1];
     },
   },
 };
