@@ -1,7 +1,7 @@
 <template>
   <div v-if="showFavorites" class="favorites">
     <button
-      @click="test"
+      @click="chooseCity(favorite.name)"
       v-for="favorite in cityFavorites"
       :key="favorite.id"
       class="favorites__city"
@@ -23,8 +23,9 @@ export default {
     }
   },
   methods: {
-    test() {
-      console.log(this.cityFavorites);
+    chooseCity(cityName) {
+      this.$store.commit("setShowFavorites");
+      return this.$store.dispatch("fetchCityWeather", cityName);
     }
   }
 };
@@ -39,7 +40,7 @@ export default {
   height: 100%;
   z-index: 10;
   color: black;
-  background-color: beige;
+  background-color: #333;
   text-align: center;
   display: flex;
   align-items: center;
