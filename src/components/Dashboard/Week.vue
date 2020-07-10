@@ -16,9 +16,9 @@ export default {
   name: "Week",
   computed: {
     cityWeather() {
-      return this.$store.getters.cityWeather;
-    },
-  },
+      return this.$store.getters.getCityWeather;
+    }
+  }
 };
 </script>
 

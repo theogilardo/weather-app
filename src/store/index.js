@@ -6,29 +6,43 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cityWeather: [],
-    cityFavorite: [],
+    cityFavorites: [],
     showFavorites: false,
   },
   getters: {
-    cityWeather(state) {
+    getCityWeather(state) {
       return state.cityWeather;
     },
-    showFavorites(state) {
+    getShowFavorites(state) {
       return state.showFavorites;
+    },
+    getCityFavorites(state) {
+      return state.cityFavorites;
     },
   },
   mutations: {
     setCityWeather(state, payload) {
       state.cityWeather = payload;
-      console.log(state.cityWeather);
+      // console.log(state.cityWeather);
     },
     addCityFavorite(state) {
-      state.cityFavorite.push(state.cityWeather);
-      localStorage.setItem("cityFavorite", JSON.stringify(state.cityFavorite));
+      const newFavCity = {
+        name: state.cityWeather[0].location.name,
+        country: state.cityWeather[0].location.country,
+      };
+
+      state.cityFavorites.push(newFavCity);
+      console.log(state.cityFavorites);
+      console.log(state.cityFavorites.map((el) => el.name));
+
+      // localStorage.setItem(
+      //   "cityFavorites",
+      //   JSON.stringify(state.cityFavorites)
+      // );
+      // state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
     },
-    showFavorites(state) {
-      state.showFavorite = !state.showFavorite;
-      console.log(state.showFavorite);
+    setShowFavorites(state) {
+      state.showFavorites = !state.showFavorites;
     },
   },
   actions: {

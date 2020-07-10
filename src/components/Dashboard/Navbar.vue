@@ -16,7 +16,7 @@ export default {
   name: "Navbar",
   methods: {
     showFavorites() {
-      this.$store.commit("showFavorites");
+      this.$store.commit("setShowFavorites");
     }
   }
 };

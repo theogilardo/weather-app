@@ -42,14 +42,14 @@ export default {
   name: "Highlights",
   data() {
     return {
-      dataAvailable: false,
+      dataAvailable: false
     };
   },
   computed: {
     cityWeather() {
-      return this.$store.getters.cityWeather[0];
-    },
-  },
+      return this.$store.getters.getCityWeather[0];
+    }
+  }
   // watch: {
   // cityWeather() {
   //   this.dataAvailable = true

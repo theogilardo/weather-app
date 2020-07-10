@@ -1,12 +1,32 @@
 <template>
-  <div class="favorites">
-    <h1>Favorites</h1>
+  <div v-if="showFavorites" class="favorites">
+    <button
+      @click="test"
+      v-for="favorite in cityFavorites"
+      :key="favorite.id"
+      class="favorites__city"
+    >
+      <h2>{{ favorite.name }} ({{ favorite.country }})</h2>
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Favorites"
+  name: "Favorites",
+  computed: {
+    showFavorites() {
+      return this.$store.getters.getShowFavorites;
+    },
+    cityFavorites() {
+      return this.$store.getters.getCityFavorites;
+    }
+  },
+  methods: {
+    test() {
+      console.log(this.cityFavorites);
+    }
+  }
 };
 </script>
 
@@ -17,6 +37,45 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 10;
+  color: black;
+  background-color: beige;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__city {
+    width: 70%;
+    margin: 0.5rem;
+    border-radius: 4px;
+    padding: 1rem 0;
+
+    // padding: 1rem 2rem;
+    font-weight: 700;
+    background-image: linear-gradient(
+      to right bottom,
+      rgba(131, 96, 195, 0.8),
+      rgba(46, 191, 145, 0.8)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    border: 4px solid transparent;
+    -o-border-image: linear-gradient(
+      to right bottom,
+      rgba(131, 96, 195, 0.8),
+      rgba(46, 191, 145, 0.8)
+    );
+    border-image: linear-gradient(
+      to right bottom,
+      rgba(131, 96, 195, 0.8),
+      rgba(46, 191, 145, 0.8)
+    );
+    border-image-slice: 1;
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+  }
 }
 </style>

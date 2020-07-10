@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     cityWeather() {
-      return this.$store.getters.cityWeather[0];
+      return this.$store.getters.getCityWeather[0];
     }
   }
 };
