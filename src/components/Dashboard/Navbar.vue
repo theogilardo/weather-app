@@ -1,6 +1,8 @@
 <template>
   <div class="navbar">
-    <h2 class="navbar__fav">Favorite Cities</h2>
+    <a href="#" @click="showFavorites" class="navbar__fav">
+      <h2>Favorite Cities</h2>
+    </a>
     <div class="navbar__commands">
       <h2>°C</h2>
       <h2>°F</h2>
@@ -12,6 +14,11 @@
 <script>
 export default {
   name: "Navbar",
+  methods: {
+    showFavorites() {
+      this.$store.commit("showFavorites");
+    }
+  }
 };
 </script>
 
@@ -25,6 +32,8 @@ export default {
 
   &__fav {
     flex: 1;
+    text-decoration: none;
+    color: #333;
   }
 
   &__commands {

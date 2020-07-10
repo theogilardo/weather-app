@@ -1,24 +1,17 @@
 <template>
   <div class="current-day" v-if="cityWeather">
-    <img
-      class="current-day__weather-icon"
-      :src="`${cityWeather.icon}`"
-      alt="Weather icon"
-    />
-    <h1 class="current-day__temperature">
-      {{ cityWeather.temperature.main }} °C
-    </h1>
-    <h2 class="current-day__date">
-      {{ cityWeather.date }}
-    </h2>
+    <img class="current-day__weather-icon" :src="`${cityWeather.icon}`" alt="Weather icon" />
+    <h1 class="current-day__temperature">{{ cityWeather.temperature.main }} °C</h1>
+    <h2 class="current-day__date">{{ cityWeather.date }}</h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
-    <p class="current-day__information">
-      {{ cityWeather.highlight.description }}
-    </p>
+    <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
     <div class="current-day__city">
-      <h2 class="current-day__city__name">
-        {{ cityWeather.location.name }} ({{ cityWeather.location.country }})
-      </h2>
+      <a @click="storeCity">
+        <img class="current-day__city__heart" src="../../assets/heart-empty.svg" alt="Heart icon" />
+      </a>
+      <h2
+        class="current-day__city__name"
+      >{{ cityWeather.location.name }} ({{ cityWeather.location.country }})</h2>
     </div>
   </div>
 </template>
@@ -26,12 +19,17 @@
 <script>
 export default {
   name: "Today",
-
+  methods: {
+    storeCity() {
+      console.log("City added!");
+      this.$store.commit("addCityFavorite");
+    }
+  },
   computed: {
     cityWeather() {
       return this.$store.getters.cityWeather[0];
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -67,6 +65,14 @@ export default {
     padding: 3rem 0;
     border-radius: 10px;
     overflow: hidden;
+
+    &__heart {
+      width: 20px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+    }
 
     &__name {
       position: absolute;

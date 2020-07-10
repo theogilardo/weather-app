@@ -2,13 +2,14 @@
   <div>
     <div class="container">
       <section class="current-day">
-        <search> </search>
-        <today> </today>
+        <search></search>
+        <today></today>
+        <favorites></favorites>
       </section>
       <section class="dashboard">
-        <Navbar> </Navbar>
-        <Week> </Week>
-        <highlights> </highlights>
+        <Navbar></Navbar>
+        <Week></Week>
+        <highlights></highlights>
       </section>
     </div>
   </div>
@@ -17,6 +18,7 @@
 <script>
 import Search from "./Today/Search.vue";
 import Today from "./Today/Today.vue";
+import Favorites from "./Today/Favorites.vue";
 import Navbar from "./Dashboard/Navbar.vue";
 import Week from "./Dashboard/Week.vue";
 import Highlights from "./Dashboard/Highlights.vue";
@@ -29,7 +31,8 @@ export default {
     Navbar,
     Week,
     Highlights,
-  },
+    Favorites
+  }
 };
 </script>
 
@@ -48,6 +51,7 @@ export default {
 }
 
 .current-day {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;

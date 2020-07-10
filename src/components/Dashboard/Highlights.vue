@@ -4,33 +4,33 @@
     <div class="highlights-container__cards" v-if="cityWeather">
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p>{{ cityWeather.temperature.min }}</p>
         <p>{{ cityWeather.temperature.max }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p class="card__text">15°C</p>
       </div>
       <div class="card">
         <h1 class="card__title">Pressure</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p class="card__text">{{ cityWeather.highlight.pressure }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Humidity</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p class="card__text">{{ cityWeather.highlight.humidity }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Cloud Coverage</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Wind Speed</h1>
-        <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
+        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
         <p class="card__text">{{ cityWeather.highlight.windSpeed }}</p>
       </div>
     </div>
