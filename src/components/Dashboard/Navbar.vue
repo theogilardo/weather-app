@@ -45,6 +45,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-left: auto;
 
     & > h2:not(:last-child) {
       margin-right: 1.5rem;
