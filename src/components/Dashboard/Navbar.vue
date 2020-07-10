@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <a href="#" @click="showFavorites" class="navbar__fav">
+    <a href="#" v-show="showFavoritesBtn" @click="showFavorites" class="navbar__fav">
       <h2>Favorite Cities</h2>
     </a>
     <div class="navbar__commands">
@@ -17,6 +17,11 @@ export default {
   methods: {
     showFavorites() {
       this.$store.commit("setShowFavorites");
+    }
+  },
+  computed: {
+    showFavoritesBtn() {
+      return this.$store.getters.getShowFavoritesBtn;
     }
   }
 };

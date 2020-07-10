@@ -8,6 +8,7 @@ export default new Vuex.Store({
     cityWeather: [],
     cityFavorites: [],
     showFavorites: false,
+    showFavoritesBtn: false,
   },
   getters: {
     getCityWeather(state) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     getShowFavorites(state) {
       return state.showFavorites;
+    },
+    getShowFavoritesBtn(state) {
+      return state.showFavoritesBtn;
     },
     getCityFavorites(state) {
       return state.cityFavorites;
@@ -43,6 +47,13 @@ export default new Vuex.Store({
     },
     setShowFavorites(state) {
       state.showFavorites = !state.showFavorites;
+    },
+    setShowFavoritesBtn(state) {
+      if (state.cityFavorites.length >= 1) {
+        state.showFavoritesBtn = true;
+      } else {
+        state.showFavoritesBtn = false;
+      }
     },
   },
   actions: {

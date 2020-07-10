@@ -23,6 +23,7 @@ export default {
     storeCity() {
       console.log("City added!");
       this.$store.commit("addCityFavorite");
+      this.$store.commit("setShowFavoritesBtn");
     }
   },
   computed: {
