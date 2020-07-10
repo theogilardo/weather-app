@@ -1,6 +1,5 @@
 <template>
-  <div class="current-day">
-    <!-- src="../../assets/sun.png" -->
+  <div class="current-day" v-if="cityWeather">
     <img
       class="current-day__weather-icon"
       :src="`${cityWeather.icon}`"
@@ -10,7 +9,7 @@
       {{ cityWeather.temperature.main }} °C
     </h1>
     <h2 class="current-day__date">
-      {{ currentTime }}
+      {{ cityWeather.date }}
     </h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
     <p class="current-day__information">
@@ -30,20 +29,7 @@ export default {
 
   computed: {
     cityWeather() {
-      return this.$store.getters.cityWeather;
-    },
-    currentTime() {
-      const days = [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ];
-      let today = new Date().getDay();
-      return days[today - 1];
+      return this.$store.getters.cityWeather[0];
     },
   },
 };

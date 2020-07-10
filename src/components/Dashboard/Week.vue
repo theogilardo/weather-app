@@ -1,23 +1,23 @@
 <template>
-  <div class="week-container">
+  <div class="week-container" v-if="cityWeather">
     <h1 class="week-container__title">Week</h1>
     <div class="week-container__cards">
-      <day></day>
-      <day></day>
-      <day></day>
-      <day></day>
-      <day></day>
+      <div class="card" :key="weather.id" v-for="weather in cityWeather">
+        <h1>{{ weather.date }}</h1>
+        <img :src="`${weather.icon}`" alt="weather icon" />
+        <p>{{ weather.temperature.main }}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Day from "./Day.vue";
-
 export default {
   name: "Week",
-  components: {
-    Day,
+  computed: {
+    cityWeather() {
+      return this.$store.getters.cityWeather;
+    },
   },
 };
 </script>
@@ -36,6 +36,33 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-around;
+  }
+
+  .card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 0.4rem;
+    text-align: center;
+  }
+
+  img {
+    width: 25px;
+    margin: 0.7rem 0;
+  }
+
+  span {
+    color: rgb(158, 158, 158);
+  }
+
+  p {
+    display: inline-block;
   }
 }
 </style>

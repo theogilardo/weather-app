@@ -1,10 +1,11 @@
 <template>
   <div>
     <form class="search">
-      <button @click="fetchweather()" class="search__btn">
+      <button @click.prevent="fetchCityWeather()" class="search__btn">
         Search
       </button>
       <input
+        v-model="searchQuery"
         class="search__input"
         type="text"
         placeholder="Type city here..."
@@ -16,20 +17,29 @@
 <script>
 export default {
   name: "Search",
-  mounted() {
-    this.$store.dispatch("fetchCityWeather");
+  data() {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    fetchCityWeather() {
+      this.$store.dispatch("fetchCityWeather", this.searchQuery);
+      this.searchQuery = "";
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .search {
-  padding: 1.5rem 0;
+  margin: 1.5rem 1rem;
   position: relative;
   width: 100%;
 
   &__input {
-    padding: 0.5rem 3.5rem;
+    padding: 0.5rem 2.5rem;
+    height: 100%;
     border: none;
     border-radius: 10px;
 
@@ -39,15 +49,16 @@ export default {
   }
 
   &__btn {
+    height: 100%;
     position: absolute;
-    top: 50%;
-    right: 2%;
-    transform: translateY(-50%);
-    background-color: #333;
-    color: white;
+    padding: 0.5rem 0.7rem;
+    right: 10%;
     border: none;
-    border-radius: 10px;
-    padding: 0.3rem 1rem;
+    color: white;
+    font-weight: 700;
+    background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 
     &:focus {
       outline: none;

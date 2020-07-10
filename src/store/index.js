@@ -15,52 +15,74 @@ export default new Vuex.Store({
   mutations: {
     setCityWeather(state, payload) {
       state.cityWeather = payload;
+      console.log(state.cityWeather);
     },
   },
   actions: {
-    async fetchCityWeather({ commit }) {
+    async fetchCityWeather({ commit }, city) {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=sydney&appid=7e918318a291df997bd192ca77406428`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
       );
       const data = await response.json();
 
-      function convertToCelcius(kelvin) {
-        return Math.round(kelvin - 273.15);
-      }
+      // function convertToCelcius(kelvin) {
+      //   return Math.round(kelvin - 273.15);
+      // }
 
-      const dateFormatted = cityWeather.date.substring(0, 10);
-      const day = new Date(dateFormatted).getDay();
+      const weatherArr = [];
 
-      const cityWeather = {
-        // date: data.list[0].dt_txt,
-        date: day,
-        location: {
-          name: data.city.name,
-          country: data.city.country,
-        },
+      data.list.map((element, index) => {
+        const dateApiFormatted = element.dt_txt.substring(0, 10);
+        const dayIndex = new Date(dateApiFormatted).getDay();
+        const days = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
 
-        temperature: {
-          // main: data.list[0].main.temp,
-          // min: data.list[0].main.temp_min,
-          // max: data.list[0].main.temp_max,
-          main: convertToCelcius(data.list[0].main.temp),
-          min: convertToCelcius(data.list[0].main.temp_min),
-          max: convertToCelcius(data.list[0].main.temp_max),
-        },
+        const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
-        highlight: {
-          main: data.list[0].weather[0].main,
-          description: data.list[0].weather[0].description,
-          id: data.list[0].weather[0].id,
-          pressure: data.list[0].main.pressure,
-          humidity: data.list[0].main.humidity,
-          cloudCoverage: data.list[0].clouds.all,
-          windSpeed: data.list[0].wind.speed,
-        },
-        icon: `http://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`,
-      };
+        if (index === 0 || index % 8 === 0) {
+          // console.log(index);
+          // console.log(element.dt_txt);
 
-      commit("setCityWeather", cityWeather);
+          const cityWeather = {
+            date: weekDay,
+            location: {
+              name: data.city.name,
+              country: data.city.country,
+            },
+
+            temperature: {
+              main: element.main.temp,
+              min: element.main.temp_min,
+              max: element.main.temp_max,
+              // main: convertToCelcius(element.main.temp),
+              // min: convertToCelcius(element.main.temp_min),
+              // max: convertToCelcius(element.main.temp_max),
+            },
+
+            highlight: {
+              main: element.weather[0].main,
+              description: element.weather[0].description,
+              id: element.weather[0].id,
+              pressure: element.main.pressure,
+              humidity: element.main.humidity,
+              cloudCoverage: element.clouds.all,
+              windSpeed: element.wind.speed,
+            },
+            icon: `http://openweathermap.org/img/w/${element.weather[0].icon}.png`,
+          };
+
+          weatherArr.push(cityWeather);
+        }
+      });
+
+      commit("setCityWeather", weatherArr);
     },
   },
   modules: {},

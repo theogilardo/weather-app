@@ -1,7 +1,7 @@
 <template>
   <div class="highlights-container">
     <h1 class="highlights-container__title">Today's highlights</h1>
-    <div class="highlights-container__cards">
+    <div class="highlights-container__cards" v-if="cityWeather">
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
         <img class="card__img" src="../../assets/sun.png" alt="weather icon" />
@@ -40,11 +40,24 @@
 <script>
 export default {
   name: "Highlights",
+  data() {
+    return {
+      dataAvailable: false,
+    };
+  },
   computed: {
     cityWeather() {
-      return this.$store.getters.cityWeather;
+      return this.$store.getters.cityWeather[0];
     },
   },
+  // watch: {
+  // cityWeather() {
+  //   this.dataAvailable = true
+  //   },
+  //   deep: true,
+  //   immediate: true
+  // }
+  // },
 };
 </script>
 
