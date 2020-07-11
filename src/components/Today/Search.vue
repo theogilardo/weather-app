@@ -1,9 +1,7 @@
 <template>
   <div>
     <form class="search">
-      <button @click.prevent="fetchCityWeather()" class="search__btn">
-        Search
-      </button>
+      <button @click.prevent="fetchCityWeather()" class="search__btn">Search</button>
       <input
         v-model="searchQuery"
         class="search__input"
@@ -19,15 +17,19 @@ export default {
   name: "Search",
   data() {
     return {
-      searchQuery: "",
+      searchQuery: ""
     };
   },
   methods: {
     fetchCityWeather() {
-      this.$store.dispatch("fetchCityWeather", this.searchQuery);
-      this.searchQuery = "";
-    },
-  },
+      if (this.searchQuery === "") {
+        alert("Please type a city");
+      } else {
+        this.$store.dispatch("fetchCityWeather", this.searchQuery);
+        this.searchQuery = "";
+      }
+    }
+  }
 };
 </script>
 

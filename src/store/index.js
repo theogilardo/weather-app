@@ -89,10 +89,6 @@ export default new Vuex.Store({
       );
       const data = await response.json();
 
-      // function convertToCelcius(kelvin) {
-      //   return Math.round(kelvin - 273.15);
-      // }
-
       const weatherArr = [];
 
       data.list.map((element, index) => {
@@ -117,16 +113,11 @@ export default new Vuex.Store({
               name: data.city.name,
               country: data.city.country,
             },
-
             temperature: {
               main: element.main.temp - 273.15,
               min: element.main.temp_min - 273.15,
               max: element.main.temp_max - 273.15,
-              // main: convertToCelcius(element.main.temp),
-              // min: convertToCelcius(element.main.temp_min),
-              // max: convertToCelcius(element.main.temp_max),
             },
-
             highlight: {
               main: element.weather[0].main,
               description: element.weather[0].description,
