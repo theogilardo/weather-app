@@ -23,7 +23,7 @@ export default {
   methods: {
     fetchCityWeather() {
       if (this.searchQuery === "") {
-        alert("Please type a city");
+        alert("Please type a city.");
       } else {
         this.$store.dispatch("fetchCityWeather", this.searchQuery);
         this.searchQuery = "";

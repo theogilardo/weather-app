@@ -84,57 +84,61 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchCityWeather({ commit }, city) {
-      const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
-      );
-      const data = await response.json();
+      try {
+        const response = await fetch(
+          `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
+        );
+        const data = await response.json();
 
-      const weatherArr = [];
+        const weatherArr = [];
 
-      data.list.map((element, index) => {
-        const dateApiFormatted = element.dt_txt.substring(0, 10);
-        const dayIndex = new Date(dateApiFormatted).getDay();
-        const days = [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ];
+        data.list.map((element, index) => {
+          const dateApiFormatted = element.dt_txt.substring(0, 10);
+          const dayIndex = new Date(dateApiFormatted).getDay();
+          const days = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ];
 
-        const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
+          const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
-        if (index === 0 || index % 8 === 0) {
-          const cityWeather = {
-            date: weekDay,
-            location: {
-              name: data.city.name,
-              country: data.city.country,
-            },
-            temperature: {
-              main: element.main.temp - 273.15,
-              min: element.main.temp_min - 273.15,
-              max: element.main.temp_max - 273.15,
-            },
-            highlight: {
-              main: element.weather[0].main,
-              description: element.weather[0].description,
-              id: element.weather[0].id,
-              pressure: element.main.pressure,
-              humidity: element.main.humidity,
-              cloudCoverage: element.clouds.all,
-              windSpeed: element.wind.speed,
-            },
-            icon: `http://openweathermap.org/img/w/${element.weather[0].icon}.png`,
-          };
+          if (index === 0 || index % 8 === 0) {
+            const cityWeather = {
+              date: weekDay,
+              location: {
+                name: data.city.name,
+                country: data.city.country,
+              },
+              temperature: {
+                main: element.main.temp - 273.15,
+                min: element.main.temp_min - 273.15,
+                max: element.main.temp_max - 273.15,
+              },
+              highlight: {
+                main: element.weather[0].main,
+                description: element.weather[0].description,
+                id: element.weather[0].id,
+                pressure: element.main.pressure,
+                humidity: element.main.humidity,
+                cloudCoverage: element.clouds.all,
+                windSpeed: element.wind.speed,
+              },
+              icon: `http://openweathermap.org/img/w/${element.weather[0].icon}.png`,
+            };
 
-          weatherArr.push(cityWeather);
-        }
-      });
+            weatherArr.push(cityWeather);
+          }
+        });
 
-      commit("setCityWeather", weatherArr);
+        commit("setCityWeather", weatherArr);
+      } catch (error) {
+        alert("Please enter a valid city.");
+      }
     },
   },
   modules: {},
