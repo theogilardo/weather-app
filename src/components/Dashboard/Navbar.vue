@@ -4,9 +4,9 @@
       <h2>Favorite Cities</h2>
     </a>
     <div class="navbar__commands">
-      <h2>°C</h2>
-      <h2>°F</h2>
-      <h2>Trad</h2>
+      <h2 :class="{ active: isActive }" @click="setCelsius">Celsius</h2>
+      <h2 :class="{ active: !isActive }" @click="setFahrenheit">Fahrenheit</h2>
+      <p>Trad</p>
     </div>
   </div>
 </template>
@@ -14,7 +14,30 @@
 <script>
 export default {
   name: "Navbar",
+  data() {
+    return {
+      isActive: true,
+      celsiusActive: true,
+      fahrenheitActive: false
+    };
+  },
   methods: {
+    setCelsius() {
+      if (this.celsiusActive === false) {
+        this.$store.commit("setCelsius");
+        this.isActive = !this.isActive;
+        this.celsiusActive = true;
+        this.fahrenheitActive = false;
+      }
+    },
+    setFahrenheit() {
+      if (this.fahrenheitActive === false) {
+        this.$store.commit("setFahrenheit");
+        this.isActive = !this.isActive;
+        this.fahrenheitActive = true;
+        this.celsiusActive = false;
+      }
+    },
     showFavorites() {
       this.$store.commit("setShowFavorites");
     }
@@ -51,5 +74,14 @@ export default {
       margin-right: 1.5rem;
     }
   }
+}
+
+h2 {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.active {
+  opacity: 1;
 }
 </style>

@@ -25,6 +25,21 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setCelsius(state) {
+      state.cityWeather.forEach(
+        (el) =>
+          // (32°F − 32) × 5/9 = 0°C
+          (el.temperature.main = Math.trunc(
+            ((el.temperature.main - 32) * 5) / 9
+          ))
+      );
+    },
+    setFahrenheit(state) {
+      state.cityWeather.forEach(
+        (el) =>
+          (el.temperature.main = Math.trunc((el.temperature.main * 9) / 5 + 32))
+      );
+    },
     refreshCities(state) {
       state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
     },
@@ -50,7 +65,7 @@ export default new Vuex.Store({
     setShowFavoritesBtn(state) {
       if (state.cityFavorites.length >= 1) {
         state.showFavoritesBtn = true;
-      } else if (localStorage.getItem("cityFavorites")) {
+      } else if (localStorage.getItem("cityFavorites").length !== 2) {
         state.showFavoritesBtn = true;
       } else {
         state.showFavoritesBtn = false;
@@ -66,6 +81,11 @@ export default new Vuex.Store({
         "cityFavorites",
         JSON.stringify(state.cityFavorites)
       );
+
+      if (state.cityFavorites.length === 0) {
+        state.showFavoritesBtn = false;
+        state.showFavorites = false;
+      }
     },
   },
   actions: {
@@ -108,9 +128,9 @@ export default new Vuex.Store({
             },
 
             temperature: {
-              main: element.main.temp,
-              min: element.main.temp_min,
-              max: element.main.temp_max,
+              main: Math.floor(element.main.temp - 273.15),
+              min: Math.floor(element.main.temp_min - 273.15),
+              max: Math.floor(element.main.temp_max - 273.15),
               // main: convertToCelcius(element.main.temp),
               // min: convertToCelcius(element.main.temp_min),
               // max: convertToCelcius(element.main.temp_max),

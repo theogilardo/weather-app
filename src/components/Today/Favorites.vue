@@ -26,15 +26,7 @@ export default {
   },
   methods: {
     deleteCity(cityName) {
-      console.log("delete");
       return this.$store.commit("removeCityFavorite", cityName);
-      // Get the name of city and pass it in function
-
-      // Commit mutation to modify the state
-
-      // Update local storage
-
-      // Call getShowFavorite to re-render city buttons
     },
     chooseCity(cityName) {
       this.$store.commit("setShowFavorites");
@@ -104,13 +96,9 @@ export default {
     position: absolute;
     top: 5px;
     right: 7px;
-    // background-color: #33333399;
-    // padding: 0.1rem 0.4rem;
     font-size: 14px;
-    // font-weight: 700;
     border-radius: 50%;
     opacity: 0.7;
-    // border: 1px solid white;
     color: white;
     text-transform: uppercase;
     cursor: pointer;

@@ -5,8 +5,8 @@
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
         <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
-        <p>{{ cityWeather.temperature.min }}</p>
-        <p>{{ cityWeather.temperature.max }}</p>
+        <p>{{ cityWeather.temperature.min }}°C</p>
+        <p>{{ cityWeather.temperature.max }}°C</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
@@ -50,14 +50,6 @@ export default {
       return this.$store.getters.getCityWeather[0];
     }
   }
-  // watch: {
-  // cityWeather() {
-  //   this.dataAvailable = true
-  //   },
-  //   deep: true,
-  //   immediate: true
-  // }
-  // },
 };
 </script>
 
@@ -79,8 +71,6 @@ export default {
     align-items: center;
   }
 
-  // card
-
   .card {
     display: flex;
     align-items: center;
@@ -96,9 +86,6 @@ export default {
     &__img {
       width: 25px;
       margin: 0.7rem 0;
-    }
-
-    &__title {
     }
 
     &__text {
