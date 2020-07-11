@@ -1,11 +1,19 @@
 <template>
   <div class="navbar">
     <a href="#" v-show="showFavoritesBtn" @click="showFavorites" class="navbar__fav">
-      <h2>Favorite Cities</h2>
+      <h2>Favorite Cities ({{ cityCount.length}})</h2>
     </a>
     <div class="navbar__commands">
-      <h2 :class="{ active: isActive }" @click="setCelsius">Celsius</h2>
-      <h2 :class="{ active: !isActive }" @click="setFahrenheit">Fahrenheit</h2>
+      <h2
+        class="navbar__commands__metrics"
+        :class="{ active: isActive }"
+        @click="setCelsius"
+      >Celsius</h2>
+      <h2
+        class="navbar__commands__metrics"
+        :class="{ active: !isActive }"
+        @click="setFahrenheit"
+      >Fahrenheit</h2>
       <p>Trad</p>
     </div>
   </div>
@@ -45,6 +53,9 @@ export default {
   computed: {
     showFavoritesBtn() {
       return this.$store.getters.getShowFavoritesBtn;
+    },
+    cityCount() {
+      return this.$store.getters.getCityFavorites;
     }
   }
 };
@@ -73,12 +84,12 @@ export default {
     & > h2:not(:last-child) {
       margin-right: 1.5rem;
     }
-  }
-}
 
-h2 {
-  cursor: pointer;
-  opacity: 0.5;
+    &__metrics {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
 }
 
 .active {
