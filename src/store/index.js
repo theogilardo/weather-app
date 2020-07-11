@@ -25,9 +25,11 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    refreshCities(state) {
+      state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
+    },
     setCityWeather(state, payload) {
       state.cityWeather = payload;
-      // console.log(state.cityWeather);
     },
     addCityFavorite(state) {
       const newFavCity = {
@@ -36,20 +38,19 @@ export default new Vuex.Store({
       };
 
       state.cityFavorites.push(newFavCity);
-      console.log(state.cityFavorites);
-      console.log(state.cityFavorites.map((el) => el.name));
 
-      // localStorage.setItem(
-      //   "cityFavorites",
-      //   JSON.stringify(state.cityFavorites)
-      // );
-      // state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
+      localStorage.setItem(
+        "cityFavorites",
+        JSON.stringify(state.cityFavorites)
+      );
     },
     setShowFavorites(state) {
       state.showFavorites = !state.showFavorites;
     },
     setShowFavoritesBtn(state) {
       if (state.cityFavorites.length >= 1) {
+        state.showFavoritesBtn = true;
+      } else if (localStorage.getItem("cityFavorites")) {
         state.showFavoritesBtn = true;
       } else {
         state.showFavoritesBtn = false;

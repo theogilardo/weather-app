@@ -7,7 +7,7 @@
     <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
     <div class="current-day__city">
       <a @click="storeCity">
-        <img class="current-day__city__heart" src="../../assets/heart-empty.svg" alt="Heart icon" />
+        <p class="current-day__city__add-to-fav">+</p>
       </a>
       <h2
         class="current-day__city__name"
@@ -21,7 +21,6 @@ export default {
   name: "Today",
   methods: {
     storeCity() {
-      console.log("City added!");
       this.$store.commit("addCityFavorite");
       this.$store.commit("setShowFavoritesBtn");
     }
@@ -67,12 +66,24 @@ export default {
     border-radius: 10px;
     overflow: hidden;
 
-    &__heart {
-      width: 20px;
+    &__add-to-fav {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 5px;
+      right: 5px;
       z-index: 5;
+      background-color: #33333399;
+      padding: 0.1rem 0.4rem;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 50%;
+      border: 1px solid white;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.7s;
+
+      &:hover {
+        transform: translateY(-1.5px);
+      }
     }
 
     &__name {
