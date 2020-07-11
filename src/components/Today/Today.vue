@@ -6,7 +6,7 @@
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
     <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
     <div class="current-day__city">
-      <a @click="storeCity">
+      <a @click="storeCity(cityWeather.location.name)">
         <p class="current-day__city__add-to-fav">+</p>
       </a>
       <h2
@@ -20,14 +20,25 @@
 export default {
   name: "Today",
   methods: {
-    storeCity() {
-      this.$store.commit("addCityFavorite");
-      this.$store.commit("setShowFavoritesBtn");
+    storeCity(cityName) {
+      const cityMatch = this.favoriteList.find(city => {
+        return city.name === cityName;
+      });
+
+      if (cityMatch) {
+        alert("City already added!");
+      } else {
+        this.$store.commit("addCityFavorite");
+        this.$store.commit("setShowFavoritesBtn");
+      }
     }
   },
   computed: {
     cityWeather() {
       return this.$store.getters.getCityWeather[0];
+    },
+    favoriteList() {
+      return this.$store.getters.getCityFavorites;
     }
   }
 };
