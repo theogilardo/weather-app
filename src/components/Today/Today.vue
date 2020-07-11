@@ -1,7 +1,7 @@
 <template>
   <div class="current-day" v-if="cityWeather">
     <img class="current-day__weather-icon" :src="`${cityWeather.icon}`" alt="Weather icon" />
-    <h1 class="current-day__temperature">{{ cityWeather.temperature.main }} °C</h1>
+    <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }} °C</h1>
     <h2 class="current-day__date">{{ cityWeather.date }}</h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
     <p class="current-day__information">{{ cityWeather.highlight.description }}</p>

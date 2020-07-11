@@ -27,17 +27,12 @@ export default new Vuex.Store({
   mutations: {
     setCelsius(state) {
       state.cityWeather.forEach(
-        (el) =>
-          // (32°F − 32) × 5/9 = 0°C
-          (el.temperature.main = Math.trunc(
-            ((el.temperature.main - 32) * 5) / 9
-          ))
+        (el) => (el.temperature.main = ((el.temperature.main - 32) * 5) / 9)
       );
     },
     setFahrenheit(state) {
       state.cityWeather.forEach(
-        (el) =>
-          (el.temperature.main = Math.trunc((el.temperature.main * 9) / 5 + 32))
+        (el) => (el.temperature.main = (el.temperature.main * 9) / 5 + 32)
       );
     },
     refreshCities(state) {
@@ -72,7 +67,6 @@ export default new Vuex.Store({
       }
     },
     removeCityFavorite(state, city) {
-      console.log(state.cityFavorites);
       state.cityFavorites = state.cityFavorites.filter(
         (el) => el.name !== city
       );
@@ -117,9 +111,6 @@ export default new Vuex.Store({
         const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
         if (index === 0 || index % 8 === 0) {
-          // console.log(index);
-          // console.log(element.dt_txt);
-
           const cityWeather = {
             date: weekDay,
             location: {
@@ -128,9 +119,9 @@ export default new Vuex.Store({
             },
 
             temperature: {
-              main: Math.floor(element.main.temp - 273.15),
-              min: Math.floor(element.main.temp_min - 273.15),
-              max: Math.floor(element.main.temp_max - 273.15),
+              main: element.main.temp - 273.15,
+              min: element.main.temp_min - 273.15,
+              max: element.main.temp_max - 273.15,
               // main: convertToCelcius(element.main.temp),
               // min: convertToCelcius(element.main.temp_min),
               // max: convertToCelcius(element.main.temp_max),

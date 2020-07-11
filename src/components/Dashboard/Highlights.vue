@@ -5,8 +5,8 @@
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
         <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
-        <p>{{ cityWeather.temperature.min }}°C</p>
-        <p>{{ cityWeather.temperature.max }}°C</p>
+        <p>{{ Math.trunc(cityWeather.temperature.min) }}°C</p>
+        <p>{{ Math.trunc(cityWeather.temperature.max) }}°C</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
