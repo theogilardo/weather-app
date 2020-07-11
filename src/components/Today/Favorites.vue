@@ -1,13 +1,8 @@
 <template>
   <div v-if="showFavorites" class="favorites">
-    <button
-      @click="chooseCity(favorite.name)"
-      v-for="favorite in cityFavorites"
-      :key="favorite.id"
-      class="favorites__city"
-    >
-      <p class="favorites__delete">x</p>
-      <h2>{{ favorite.name }} ({{ favorite.country }})</h2>
+    <button v-for="favorite in cityFavorites" :key="favorite.id" class="favorites__city">
+      <p @click="deleteCity(favorite.name)" class="favorites__delete">x</p>
+      <h2 @click="chooseCity(favorite.name)">{{ favorite.name }} ({{ favorite.country }})</h2>
     </button>
   </div>
 </template>
@@ -30,6 +25,17 @@ export default {
     }
   },
   methods: {
+    deleteCity(cityName) {
+      console.log("delete");
+      return this.$store.commit("removeCityFavorite", cityName);
+      // Get the name of city and pass it in function
+
+      // Commit mutation to modify the state
+
+      // Update local storage
+
+      // Call getShowFavorite to re-render city buttons
+    },
     chooseCity(cityName) {
       this.$store.commit("setShowFavorites");
       return this.$store.dispatch("fetchCityWeather", cityName);
@@ -88,6 +94,10 @@ export default {
     &:hover {
       transform: translateY(-2px) scale(1.05);
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__delete {
@@ -106,5 +116,9 @@ export default {
     cursor: pointer;
     transition: all 0.7s;
   }
+}
+
+h2 {
+  cursor: pointer;
 }
 </style>

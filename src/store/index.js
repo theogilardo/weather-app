@@ -56,6 +56,17 @@ export default new Vuex.Store({
         state.showFavoritesBtn = false;
       }
     },
+    removeCityFavorite(state, city) {
+      console.log(state.cityFavorites);
+      state.cityFavorites = state.cityFavorites.filter(
+        (el) => el.name !== city
+      );
+
+      localStorage.setItem(
+        "cityFavorites",
+        JSON.stringify(state.cityFavorites)
+      );
+    },
   },
   actions: {
     async fetchCityWeather({ commit }, city) {
