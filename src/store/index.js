@@ -92,6 +92,12 @@ export default new Vuex.Store({
 
         const weatherArr = [];
 
+        const responseImg = await fetch(
+          `https://api.unsplash.com/search/photos?query=${city}&client_id=WlqNLtGT_QMVB2xvS8oyVo6WRZpNf3CL8VSDC5syfVk`
+        );
+        const dataImg = await responseImg.json();
+        const cityImg = dataImg.results[0].urls.raw;
+
         data.list.map((element, index) => {
           const dateApiFormatted = element.dt_txt.substring(0, 10);
           const dayIndex = new Date(dateApiFormatted).getDay();
@@ -128,6 +134,7 @@ export default new Vuex.Store({
                 cloudCoverage: element.clouds.all,
                 windSpeed: element.wind.speed,
               },
+              image: cityImg,
               icon: `http://openweathermap.org/img/w/${element.weather[0].icon}.png`,
             };
 
