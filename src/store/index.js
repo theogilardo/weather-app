@@ -93,6 +93,7 @@ export default new Vuex.Store({
 
         const weatherArr = [];
 
+        // Set city photos
         const responseImg = await fetch(
           `https://api.unsplash.com/search/photos?query=${city}&client_id=WlqNLtGT_QMVB2xvS8oyVo6WRZpNf3CL8VSDC5syfVk`
         );
@@ -111,6 +112,15 @@ export default new Vuex.Store({
             "Saturday",
             "Sunday",
           ];
+
+          // Set time
+          // let timestamp = element.city.sunrise;
+          // const date = new Date(timestamp * 1000);
+          // const hours = date.getHours();
+          // const minutes = "0" + date.getMinutes();
+          // const seconds = "0" + date.getSeconds();
+          // const sunriseTime =
+          //   hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
 
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
@@ -135,6 +145,7 @@ export default new Vuex.Store({
                 cloudCoverage: element.clouds.all,
                 windSpeed: element.wind.speed,
               },
+              // time: sunriseTime,
               image: cityImg,
               icon: element.weather[0].icon,
             };
