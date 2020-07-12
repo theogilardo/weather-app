@@ -4,8 +4,8 @@
     <div class="highlights-container__cards" v-if="cityWeather">
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
-        <p>{{ Math.trunc(cityWeather.temperature.min) }}°</p>
-        <p>{{ Math.trunc(cityWeather.temperature.max) }}°</p>
+        <p>{{ Math.trunc(minMaxTemp.min) }}°</p>
+        <p>{{ Math.trunc(minMaxTemp.max) }}°</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
@@ -48,6 +48,9 @@ export default {
   computed: {
     cityWeather() {
       return this.$store.getters.getCityWeather[0];
+    },
+    minMaxTemp() {
+      return this.$store.getters.getMinMaxTemp;
     }
   }
 };
