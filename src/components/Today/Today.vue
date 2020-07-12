@@ -1,6 +1,10 @@
 <template>
   <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
-    <img class="current-day__weather-icon" :src="`${cityWeather.icon}`" alt="Weather icon" />
+    <img
+      class="current-day__weather-icon"
+      :src="require(`../../assets/${cityWeather.icon}.png`)"
+      alt="Weather icon"
+    />
     <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
     <h2 class="current-day__date">{{ cityWeather.date }}</h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>

@@ -4,7 +4,7 @@
     <div class="week-container__cards">
       <div class="card" :key="weather.id" v-for="weather in cityWeather">
         <h1>{{ weather.date }}</h1>
-        <img :src="`${weather.icon}`" alt="weather icon" />
+        <img :src="require(`../../assets/${weather.icon}.png`)" alt="Weather icon" />
         <p>{{ Math.trunc(weather.temperature.main) }}°</p>
       </div>
     </div>

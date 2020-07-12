@@ -136,7 +136,7 @@ export default new Vuex.Store({
                 windSpeed: element.wind.speed,
               },
               image: cityImg,
-              icon: `http://openweathermap.org/img/w/${element.weather[0].icon}.png`,
+              icon: element.weather[0].icon,
             };
 
             weatherArr.push(cityWeather);
