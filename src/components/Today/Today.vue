@@ -1,5 +1,5 @@
 <template>
-  <div class="current-day" v-if="cityWeather">
+  <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
     <img class="current-day__weather-icon" :src="`${cityWeather.icon}`" alt="Weather icon" />
     <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }} °C</h1>
     <h2 class="current-day__date">{{ cityWeather.date }}</h2>
@@ -39,12 +39,24 @@ export default {
     },
     favoriteList() {
       return this.$store.getters.getCityFavorites;
+    },
+    showFavorites() {
+      return this.$store.getters.getShowFavorites;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.current-day > * {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.aniFavorites.current-day > * {
+  opacity: 0;
+}
+
 .current-day {
   width: 100%;
   display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="search">
+    <form class="search" :class="{aniFavorites: showFavorites}">
       <button @click.prevent="fetchCityWeather()" class="search__btn">Search</button>
       <input
         v-model="searchQuery"
@@ -29,15 +29,26 @@ export default {
         this.searchQuery = "";
       }
     }
+  },
+  computed: {
+    showFavorites() {
+      return this.$store.getters.getShowFavorites;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.aniFavorites.search {
+  opacity: 0;
+}
+
 .search {
   margin: 1.5rem 1rem;
   position: relative;
   width: 100%;
+  opacity: 1;
+  transition: all 0.5s;
 
   &__input {
     padding: 0.5rem 2.5rem;

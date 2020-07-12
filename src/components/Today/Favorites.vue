@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showFavorites" class="favorites">
+  <div :class="{aniFavorites: showFavorites}" class="favorites">
     <button v-for="favorite in cityFavorites" :key="favorite.id" class="favorites__city">
       <p @click="deleteCity(favorite.name)" class="favorites__delete">x</p>
       <h2 @click="chooseCity(favorite.name)">{{ favorite.name }} ({{ favorite.country }})</h2>
@@ -37,6 +37,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.aniFavorites.favorites {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .favorites {
   position: absolute;
   top: 0;
@@ -51,6 +56,9 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transform: translateX(-300px);
+  opacity: 0;
+  transition: transform 0.4s linear, opacity 0.4s linear;
 
   &__city {
     position: relative;
