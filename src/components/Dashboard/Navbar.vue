@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <a href="#" v-show="showFavoritesBtn" @click="showFavorites" class="navbar__fav">
-      <h2>Favorite Cities ({{ cityCount.length}})</h2>
+      <h2>Favorite Cities ({{ cityCount.length}}/5)</h2>
     </a>
     <div class="navbar__commands">
       <h2

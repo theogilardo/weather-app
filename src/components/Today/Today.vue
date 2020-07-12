@@ -28,6 +28,10 @@ export default {
 
       if (cityMatch) {
         alert("City already added!");
+      } else if (this.favoriteList.length > 4) {
+        alert(
+          "You have reached the maximum of cities that can be added to favorite"
+        );
       } else {
         this.$store.commit("addCityFavorite");
         this.$store.commit("setShowFavoritesBtn");

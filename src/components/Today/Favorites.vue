@@ -52,7 +52,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  margin-top: 1rem;
+  margin-top: 2rem;
   z-index: 10;
   color: black;
   background-color: #333;
