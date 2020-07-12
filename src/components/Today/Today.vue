@@ -100,6 +100,7 @@ export default {
       border-radius: 10px;
       background-position: center;
       background-size: cover;
+      object-fit: cover;
       width: 100%;
       height: 100%;
     }
