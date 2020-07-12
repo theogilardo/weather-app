@@ -96,13 +96,17 @@ export default {
     position: absolute;
     top: 5px;
     right: 7px;
-    font-size: 14px;
+    font-size: 10px;
     border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0.3;
     color: white;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.7s;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

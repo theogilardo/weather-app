@@ -72,7 +72,7 @@ export default {
     background-image: url(../../assets/nyc.jpg);
     background-position: center;
     background-size: cover;
-    width: 80%;
+    width: 95%;
     padding: 3rem 0;
     border-radius: 10px;
     overflow: hidden;

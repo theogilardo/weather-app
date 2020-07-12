@@ -30,6 +30,10 @@ export default {
   &__title {
     font-size: 1.6rem;
     padding: 0 0 1rem 0.2rem;
+    background-image: linear-gradient(#8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
   }
 
   &__cards {
@@ -50,6 +54,15 @@ export default {
     border-radius: 10px;
     margin: 0 0.4rem;
     text-align: center;
+
+    h1 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      display: inline-block;
+      font-size: 0.9rem;
+    }
   }
 
   img {
@@ -59,10 +72,6 @@ export default {
 
   span {
     color: rgb(158, 158, 158);
-  }
-
-  p {
-    display: inline-block;
   }
 }
 </style>

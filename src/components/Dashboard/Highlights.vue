@@ -10,27 +10,27 @@
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
-        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
+        <img class="card__img" src="../../assets/sunset.png" alt="weather icon" />
         <p class="card__text">15°C</p>
       </div>
       <div class="card">
         <h1 class="card__title">Pressure</h1>
-        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
+        <img class="card__img" src="../../assets/pressure.png" alt="weather icon" />
         <p class="card__text">{{ cityWeather.highlight.pressure }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Humidity</h1>
-        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
+        <img class="card__img" src="../../assets/humidity.png" alt="weather icon" />
         <p class="card__text">{{ cityWeather.highlight.humidity }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Cloud Coverage</h1>
-        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
+        <img class="card__img" src="../../assets/clouds.png" alt="weather icon" />
         <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Wind Speed</h1>
-        <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
+        <img class="card__img" src="../../assets/wind.png" alt="weather icon" />
         <p class="card__text">{{ cityWeather.highlight.windSpeed }}</p>
       </div>
     </div>
@@ -58,8 +58,12 @@ export default {
   margin-top: 2rem;
 
   &__title {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     padding: 0 0 1rem 0.2rem;
+    background-image: linear-gradient(#8360c3, #2ebf91);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
   }
 
   &__cards {
@@ -83,13 +87,18 @@ export default {
     border-radius: 10px;
     text-align: center;
 
+    &__title {
+      font-size: 1.1rem;
+    }
+
     &__img {
-      width: 25px;
+      width: 35px;
       margin: 0.7rem 0;
     }
 
     &__text {
       display: inline-block;
+      font-size: 0.9rem;
     }
   }
 }

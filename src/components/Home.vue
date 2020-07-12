@@ -65,7 +65,8 @@ export default {
   justify-content: space-around;
   flex-direction: column;
   padding: 2rem;
-  background-color: #f6f6f8;
+  background-color: #f3f3f3;
+  // background-color: #f6f6f8;
   flex: 2.5;
 }
 </style>
