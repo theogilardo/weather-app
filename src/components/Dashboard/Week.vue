@@ -5,7 +5,7 @@
       <div class="card" :key="weather.id" v-for="weather in cityWeather">
         <h1>{{ weather.date }}</h1>
         <img :src="`${weather.icon}`" alt="weather icon" />
-        <p>{{ Math.trunc(weather.temperature.main) }}°C</p>
+        <p>{{ Math.trunc(weather.temperature.main) }}°</p>
       </div>
     </div>
   </div>

@@ -1,13 +1,12 @@
 <template>
   <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
     <img class="current-day__weather-icon" :src="`${cityWeather.icon}`" alt="Weather icon" />
-    <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }} °C</h1>
+    <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
     <h2 class="current-day__date">{{ cityWeather.date }}</h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
     <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
     <div class="current-day__city">
       <img class="current-day__city__img" :src="cityWeather.image" alt="Photo of city" />
-      <!-- <img class="current-day__city__img" src="../../assets/nyc.jpg" alt="Photo of city" /> -->
       <a @click="storeCity(cityWeather.location.name)">
         <p class="current-day__city__add-to-fav">+</p>
       </a>
@@ -83,7 +82,6 @@ export default {
     position: relative;
     z-index: 4;
     margin-top: auto;
-    // background-image: url(../../assets/nyc.jpg);
     width: 95%;
     margin: 3rem 0;
     border-radius: 10px;

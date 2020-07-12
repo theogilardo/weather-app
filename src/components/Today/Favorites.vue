@@ -1,8 +1,12 @@
 <template>
   <div :class="{aniFavorites: showFavorites}" class="favorites">
     <button v-for="favorite in cityFavorites" :key="favorite.id" class="favorites__city">
+      <img class="favorites__img" :src="`${favorite.img}`" alt="City photo" />
       <p @click="deleteCity(favorite.name)" class="favorites__delete">x</p>
-      <h2 @click="chooseCity(favorite.name)">{{ favorite.name }} ({{ favorite.country }})</h2>
+      <h2
+        class="favorites__text"
+        @click="chooseCity(favorite.name)"
+      >{{ favorite.name }} ({{ favorite.country }})</h2>
     </button>
   </div>
 </template>
@@ -48,46 +52,38 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  margin-top: 1rem;
   z-index: 10;
   color: black;
   background-color: #333;
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   transform: translateX(-300px);
   opacity: 0;
   transition: transform 0.4s linear, opacity 0.4s linear;
 
+  &__img {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
   &__city {
     position: relative;
+    height: 6rem;
+
     width: 70%;
     margin: 0.5rem;
-    border-radius: 4px;
-    padding: 1rem 0;
     font-weight: 700;
-    background-image: linear-gradient(
-      to right bottom,
-      rgba(131, 96, 195, 0.8),
-      rgba(46, 191, 145, 0.8)
-    );
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
     text-transform: uppercase;
-    border: 4px solid transparent;
-    -o-border-image: linear-gradient(
-      to right bottom,
-      rgba(131, 96, 195, 0.8),
-      rgba(46, 191, 145, 0.8)
-    );
-    border-image: linear-gradient(
-      to right bottom,
-      rgba(131, 96, 195, 0.8),
-      rgba(46, 191, 145, 0.8)
-    );
-    border-image-slice: 1;
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
     box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
     transition: all 0.4s;
 
@@ -100,8 +96,24 @@ export default {
     }
   }
 
+  &__text {
+    cursor: pointer;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #33333344;
+  }
+
   &__delete {
     position: absolute;
+    z-index: 50;
     top: 5px;
     right: 7px;
     font-size: 10px;
@@ -116,9 +128,5 @@ export default {
       opacity: 1;
     }
   }
-}
-
-h2 {
-  cursor: pointer;
 }
 </style>

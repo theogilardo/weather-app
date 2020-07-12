@@ -45,6 +45,7 @@ export default new Vuex.Store({
       const newFavCity = {
         name: state.cityWeather[0].location.name,
         country: state.cityWeather[0].location.country,
+        img: state.cityWeather[0].image,
       };
 
       state.cityFavorites.push(newFavCity);

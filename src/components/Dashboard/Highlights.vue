@@ -5,13 +5,13 @@
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
         <!-- <img class="card__img" src="../../assets/sun.png" alt="weather icon" /> -->
-        <p>{{ Math.trunc(cityWeather.temperature.min) }}°C</p>
-        <p>{{ Math.trunc(cityWeather.temperature.max) }}°C</p>
+        <p>{{ Math.trunc(cityWeather.temperature.min) }}°</p>
+        <p>{{ Math.trunc(cityWeather.temperature.max) }}°</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
         <img class="card__img" src="../../assets/sunset.png" alt="weather icon" />
-        <p class="card__text">15°C</p>
+        <p class="card__text">15°</p>
       </div>
       <div class="card">
         <h1 class="card__title">Pressure</h1>
