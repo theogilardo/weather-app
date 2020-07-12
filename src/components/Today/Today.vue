@@ -107,8 +107,8 @@ export default {
 
     &__add-to-fav {
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: 6px;
+      right: 6px;
       z-index: 5;
       background-color: #33333399;
       padding: 0.1rem 0.4rem;

@@ -101,6 +101,7 @@ export default new Vuex.Store({
         const cityImg = dataImg.results[0].urls.raw;
 
         data.list.map((element, index) => {
+          // Set day of the week
           const dateApiFormatted = element.dt_txt.substring(0, 10);
           const dayIndex = new Date(dateApiFormatted).getDay();
           const days = [
@@ -113,19 +114,18 @@ export default new Vuex.Store({
             "Sunday",
           ];
 
+          const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
+
           // Set time
           function setTime(timestamp) {
             const date = new Date(timestamp * 1000);
             const hours = date.getHours();
             const minutes = "0" + date.getMinutes();
-            const seconds = "0" + date.getSeconds();
-            return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+            return hours + ":" + minutes.substr(-2);
           }
 
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
-
-          const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
           if (index === 0 || index % 8 === 0) {
             const cityWeather = {
@@ -156,7 +156,6 @@ export default new Vuex.Store({
               icon: element.weather[0].icon,
             };
 
-            console.log(cityWeather);
             weatherArr.push(cityWeather);
           }
         });

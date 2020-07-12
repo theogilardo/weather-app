@@ -49,9 +49,6 @@ export default {
     cityWeather() {
       return this.$store.getters.getCityWeather[0];
     }
-    // formatSunTime() {
-    //   const time = this.$store.getter.getCityWeather[0];
-    // }
   }
 };
 </script>
