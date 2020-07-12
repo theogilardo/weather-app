@@ -114,13 +114,16 @@ export default new Vuex.Store({
           ];
 
           // Set time
-          // let timestamp = element.city.sunrise;
-          // const date = new Date(timestamp * 1000);
-          // const hours = date.getHours();
-          // const minutes = "0" + date.getMinutes();
-          // const seconds = "0" + date.getSeconds();
-          // const sunriseTime =
-          //   hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+          function setTime(timestamp) {
+            const date = new Date(timestamp * 1000);
+            const hours = date.getHours();
+            const minutes = "0" + date.getMinutes();
+            const seconds = "0" + date.getSeconds();
+            return hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+          }
+
+          const sunrise = setTime(data.city.sunrise);
+          const sunset = setTime(data.city.sunset);
 
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
 
@@ -145,11 +148,15 @@ export default new Vuex.Store({
                 cloudCoverage: element.clouds.all,
                 windSpeed: element.wind.speed,
               },
-              // time: sunriseTime,
+              sunTime: {
+                sunrise,
+                sunset,
+              },
               image: cityImg,
               icon: element.weather[0].icon,
             };
 
+            console.log(cityWeather);
             weatherArr.push(cityWeather);
           }
         });

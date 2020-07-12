@@ -10,7 +10,8 @@
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
         <img class="card__img" src="../../assets/sunset.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.time}}</p>
+        <p class="card__text">{{ cityWeather.sunTime.sunrise}}</p>
+        <p class="card__text">{{ cityWeather.sunTime.sunset}}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Pressure</h1>
@@ -48,6 +49,9 @@ export default {
     cityWeather() {
       return this.$store.getters.getCityWeather[0];
     }
+    // formatSunTime() {
+    //   const time = this.$store.getter.getCityWeather[0];
+    // }
   }
 };
 </script>
@@ -60,7 +64,7 @@ export default {
     font-size: 1.7rem;
     padding: 0 0 1rem 0.2rem;
     background-image: linear-gradient(#8360c3, #2ebf91);
-    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     letter-spacing: 2px;
   }
