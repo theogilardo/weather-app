@@ -30,14 +30,18 @@ export default new Vuex.Store({
   },
   mutations: {
     setCelsius(state) {
-      state.cityWeather.forEach(
-        (el) => (el.temperature.main = ((el.temperature.main - 32) * 5) / 9)
-      );
+      state.cityWeather.forEach((el) => {
+        el.temperature.main = ((el.temperature.main - 32) * 5) / 9;
+        el.temperature.minmax.min = ((el.temperature.minmax.min - 32) * 5) / 9;
+        el.temperature.minmax.max = ((el.temperature.minmax.max - 32) * 5) / 9;
+      });
     },
     setFahrenheit(state) {
-      state.cityWeather.forEach(
-        (el) => (el.temperature.main = (el.temperature.main * 9) / 5 + 32)
-      );
+      state.cityWeather.forEach((el) => {
+        el.temperature.main = (el.temperature.main * 9) / 5 + 32;
+        el.temperature.minmax.min = (el.temperature.minmax.min * 9) / 5 + 32;
+        el.temperature.minmax.max = (el.temperature.minmax.max * 9) / 5 + 32;
+      });
     },
     refreshCities(state) {
       state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
@@ -146,8 +150,8 @@ export default new Vuex.Store({
           let minMaxDay = {};
 
           minMaxDay = {
-            min: Math.trunc(minValue - 273.15),
-            max: Math.trunc(maxValue - 273.15),
+            min: minValue - 273.15,
+            max: maxValue - 273.15,
           };
 
           minMaxList[`${listDay[i]}`] = minMaxDay;
