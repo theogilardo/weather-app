@@ -99,6 +99,15 @@ export default new Vuex.Store({
         const data = await response.json();
 
         const weatherArr = [];
+        const days = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
 
         // Set city photos
         const responseImg = await fetch(
@@ -111,37 +120,38 @@ export default new Vuex.Store({
         data.list.forEach((timestamp) => {
           const dateApiFormatted = timestamp.dt_txt.substring(0, 10);
           const dayIndex = new Date(dateApiFormatted).getDay();
-          const days = [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ];
-
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
           timestamp.dt_txt = weekDay;
         });
 
-        // Set min/max values
-        const findCurrentDayArr = data.list.filter(
-          (timestamp) => timestamp.dt_txt === data.list[0].dt_txt
-        );
+        // Set Min/Max for each day
+        const listAllDays = data.list.map((day) => day.dt_txt);
+        const listDay = [...new Set(listAllDays)];
 
-        const minValue = findCurrentDayArr
-          .map((day) => day.main.temp_min)
-          .sort((a, b) => a - b)[0];
+        const minMaxList = {};
 
-        const maxValue = findCurrentDayArr
-          .map((day) => day.main.temp_max)
-          .sort((a, b) => b - a)[0];
+        for (let i = 0; i < listDay.length; i++) {
+          const findCurrentDayArr = data.list.filter(
+            (timestamp) => timestamp.dt_txt === listDay[i]
+          );
 
-        const minMax = {
-          min: minValue - 273.15,
-          max: maxValue - 273.15,
-        };
+          const minValue = findCurrentDayArr
+            .map((day) => day.main.temp_min)
+            .sort((a, b) => a - b)[0];
+
+          const maxValue = findCurrentDayArr
+            .map((day) => day.main.temp_max)
+            .sort((a, b) => b - a)[0];
+
+          let mixMaxDay = {};
+
+          mixMaxDay = {
+            min: Math.trunc(minValue - 273.15),
+            max: Math.trunc(maxValue - 273.15),
+          };
+
+          minMaxList[`${listDay[i]}`] = mixMaxDay;
+        }
 
         data.list.map((element, index) => {
           // Set time
@@ -151,8 +161,6 @@ export default new Vuex.Store({
             const minutes = "0" + date.getMinutes();
             return hours + ":" + minutes.substr(-2);
           }
-
-          console.log(minMax);
 
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
@@ -166,9 +174,7 @@ export default new Vuex.Store({
               },
               temperature: {
                 main: element.main.temp - 273.15,
-                // min: element.main.temp_min - 273.15,
-                // max: element.main.temp_max - 273.15,
-                minmax: minMax,
+                minmax: minMaxList[element.dt_txt],
               },
               highlight: {
                 main: element.weather[0].main,
@@ -187,15 +193,14 @@ export default new Vuex.Store({
               icon: element.weather[0].icon,
             };
 
-            // console.log(weatherArr);
+            console.log(weatherArr);
             weatherArr.push(cityWeather);
           }
         });
 
         commit("setCityWeather", weatherArr);
       } catch (error) {
-        alert(error);
-        // alert("Please enter a valid city.");
+        alert("Please enter a valid city.");
       }
     },
   },
