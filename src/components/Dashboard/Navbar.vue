@@ -14,9 +14,9 @@
         :class="{ active: !isActive }"
         @click="setFahrenheit"
       >Fahrenheit</h2>
-      <h2 @click="activeTrad" :class="{showtrad: tradActive}">Google</h2>
-      <div v-show="tradActive" id="google_translate_element"></div>
+      <h2 class="translate" @click="activeTrad">Translate</h2>
     </div>
+    <div :class="{showtrad: tradActive}" id="google_translate_element"></div>
   </div>
 </template>
 
@@ -69,12 +69,29 @@ export default {
 
 <style lang="scss" scoped>
 #google_translate_element {
-  opacity: 0.2;
-  // display: none;
+  opacity: 0;
+  width: 0%;
+  transform: translateX(100px);
+  text-align: right;
+  transition: opacity 0.5s linear, width 0.5s linear, transform 0.5s linear;
 }
 
 #google_translate_element.showtrad {
   opacity: 1;
+  width: 25%;
+  transform: translateX(0);
+}
+
+.translate {
+  background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.4s;
+
+  &:hover {
+    transform: translateY(-1.3px);
+  }
 }
 
 .navbar {

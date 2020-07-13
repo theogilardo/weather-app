@@ -55,7 +55,6 @@ export default {
     padding: 0.5rem 2.5rem;
     height: 100%;
     border: none;
-    // border-radius: 10px;
     border-top-left-radius: 10px;
 
     &:focus {
@@ -72,8 +71,6 @@ export default {
     color: white;
     font-weight: 700;
     background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
-    // border-top-right-radius: 10px;
-    // border-bottom-right-radius: 10px;
 
     &:focus {
       outline: none;
