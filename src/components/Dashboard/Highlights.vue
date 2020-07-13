@@ -15,22 +15,22 @@
       <div class="card">
         <h1 class="card__title">Pressure</h1>
         <img class="card__img" src="../../assets/pressure.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.pressure }}</p>
+        <p class="card__text">{{ cityWeather.highlight.pressure }}hPa</p>
       </div>
       <div class="card">
         <h1 class="card__title">Humidity</h1>
         <img class="card__img" src="../../assets/humidity.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.humidity }}</p>
+        <p class="card__text">{{ cityWeather.highlight.humidity }}%</p>
       </div>
       <div class="card">
         <h1 class="card__title">Cloud Coverage</h1>
         <img class="card__img" src="../../assets/clouds.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}</p>
+        <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}%</p>
       </div>
       <div class="card">
         <h1 class="card__title">Wind Speed</h1>
         <img class="card__img" src="../../assets/wind.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.windSpeed }}</p>
+        <p class="card__text">{{ cityWeather.highlight.windSpeed }}m/s</p>
       </div>
     </div>
   </div>

@@ -26,7 +26,6 @@ export default {
 .week-container {
   align-self: flex-start;
   width: 100%;
-  border: 1px solid red;
 
   &__cards {
     height: 8.5rem;

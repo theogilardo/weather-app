@@ -9,10 +9,12 @@
       <section class="dashboard">
         <Navbar></Navbar>
         <div class="command">
-          <router-link class="command__link" to="/week">Timeline</router-link>
-          <router-link class="command__link" to="/timeline">Week</router-link>
+          <router-link class="command__link" to="/timeline">Timeline</router-link>
+          <router-link class="command__link" to="/week">Week</router-link>
         </div>
+        <!-- <transition name="slide"> -->
         <router-view></router-view>
+        <!-- </transition> -->
         <highlights></highlights>
       </section>
     </div>
@@ -39,6 +41,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide-enter {
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transition: opacity 1s;
+}
+
+.fade-leave {
+  // opacity: 1;s
+}
+
+.fade-leave-active {
+  transition: opacity 1s;
+  opacity: 0;
+}
+
 .command {
   display: flex;
   align-items: center;

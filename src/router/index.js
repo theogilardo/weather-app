@@ -12,8 +12,8 @@ const routes = [
     name: "Home",
     component: Home,
     children: [
-      { path: "week", component: Week },
       { path: "timeline", component: Timeline },
+      { path: "week", component: Week },
     ],
   },
 ];
