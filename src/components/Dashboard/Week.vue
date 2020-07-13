@@ -6,6 +6,7 @@
         <h1>{{ weather.date }}</h1>
         <img :src="require(`../../assets/${weather.icon}.png`)" alt="Weather icon" />
         <p>{{ Math.trunc(weather.temperature.main) }}°</p>
+        <span>{{ weather.temperature.minmax.min}}°/{{ weather.temperature.minmax.max}}°</span>
       </div>
     </div>
   </div>
@@ -63,15 +64,17 @@ export default {
       display: inline-block;
       font-size: 0.9rem;
     }
+
+    span {
+      font-size: 0.6rem;
+      opacity: 0.6;
+    }
   }
 
   img {
     width: 25px;
     margin: 0.7rem 0;
-  }
-
-  span {
-    color: rgb(158, 158, 158);
+    text-align: center;
   }
 }
 </style>
