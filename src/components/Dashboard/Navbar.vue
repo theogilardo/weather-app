@@ -14,17 +14,8 @@
         :class="{ active: !isActive }"
         @click="setFahrenheit"
       >Fahrenheit</h2>
-      <!-- <div id="google_translate_element"></div> -->
-
-      <div id="google_translate_element">
-        <div class="skiptranslate goog-te-gadget" style>
-          <div id=":1.targetLanguage">
-            <select class="goog-te-combo"></select>
-          </div>
-
-          <span style="white-space: nowrap;"></span>
-        </div>
-      </div>
+      <h2 @click="activeTrad" :class="{showtrad: tradActive}">Google</h2>
+      <div v-show="tradActive" id="google_translate_element"></div>
     </div>
   </div>
 </template>
@@ -34,12 +25,17 @@ export default {
   name: "Navbar",
   data() {
     return {
+      tradActive: false,
       isActive: true,
       celsiusActive: true,
       fahrenheitActive: false
     };
   },
   methods: {
+    activeTrad() {
+      this.tradActive = !this.tradActive;
+      console.log(this.tradActive);
+    },
     setCelsius() {
       if (this.celsiusActive === false) {
         this.$store.commit("setCelsius");
@@ -72,9 +68,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.goog-te-combo {
-  color: red;
-  display: none;
+#google_translate_element {
+  opacity: 0.2;
+  // display: none;
+}
+
+#google_translate_element.showtrad {
+  opacity: 1;
 }
 
 .navbar {
