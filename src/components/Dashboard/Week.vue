@@ -1,7 +1,7 @@
 <template>
-  <div class="week-container" v-if="cityWeather">
+  <div class="week-container" v-if="getWeekWeather">
     <div class="week-container__cards">
-      <div class="card" :key="weather.id" v-for="weather in cityWeather">
+      <div class="card" :key="weather.id" v-for="weather in getWeekWeather">
         <h1>{{ weather.date }}</h1>
         <img :src="require(`../../assets/${weather.icon}.png`)" alt="Weather icon" />
         <p>{{ Math.trunc(weather.temperature.minmax.min)}}°/{{ Math.trunc(weather.temperature.minmax.max)}}°</p>
@@ -14,8 +14,8 @@
 export default {
   name: "Week",
   computed: {
-    cityWeather() {
-      return this.$store.getters.getCityWeather;
+    getWeekWeather() {
+      return this.$store.getters.getWeekWeather;
     }
   }
 };

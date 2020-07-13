@@ -18,6 +18,17 @@ export default new Vuex.Store({
     getCityWeather(state) {
       return state.cityWeather;
     },
+    getWeekWeather(state) {
+      const testArr = [];
+      state.cityWeather.map((el, index) => {
+        if (index === 0 || index % 8 === 0) {
+          testArr.push(el);
+        }
+      });
+
+      console.log(testArr);
+      return testArr;
+    },
     getShowFavorites(state) {
       return state.showFavorites;
     },
@@ -123,9 +134,11 @@ export default new Vuex.Store({
         // Set Date for all
         data.list.forEach((timestamp) => {
           const dateApiFormatted = timestamp.dt_txt.substring(0, 10);
+          const timeApiFormatted = timestamp.dt_txt.substring(11, 16);
           const dayIndex = new Date(dateApiFormatted).getDay();
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
           timestamp.dt_txt = weekDay;
+          timestamp.time = timeApiFormatted;
         });
 
         // Set Min/Max for each day
@@ -157,7 +170,7 @@ export default new Vuex.Store({
           minMaxList[`${listDay[i]}`] = minMaxDay;
         }
 
-        data.list.map((element, index) => {
+        data.list.map((element) => {
           // Set time
           function setTime(timestamp) {
             const date = new Date(timestamp * 1000);
@@ -169,37 +182,40 @@ export default new Vuex.Store({
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
 
-          if (index === 0 || index % 8 === 0) {
-            const cityWeather = {
-              date: element.dt_txt,
-              location: {
-                name: data.city.name,
-                country: data.city.country,
-              },
-              temperature: {
-                main: element.main.temp - 273.15,
-                minmax: minMaxList[element.dt_txt],
-              },
-              highlight: {
-                main: element.weather[0].main,
-                description: element.weather[0].description,
-                id: element.weather[0].id,
-                pressure: element.main.pressure,
-                humidity: element.main.humidity,
-                cloudCoverage: element.clouds.all,
-                windSpeed: element.wind.speed,
-              },
-              sunTime: {
-                sunrise,
-                sunset,
-              },
-              image: cityImg,
-              icon: element.weather[0].icon,
-            };
+          // if (index === 0 || index % 8 === 0) {
+          const cityWeather = {
+            date: element.dt_txt,
+            time: element.time,
+            location: {
+              name: data.city.name,
+              country: data.city.country,
+            },
+            temperature: {
+              main: element.main.temp - 273.15,
+              minmax: minMaxList[element.dt_txt],
+            },
+            highlight: {
+              main: element.weather[0].main,
+              description: element.weather[0].description,
+              id: element.weather[0].id,
+              pressure: element.main.pressure,
+              humidity: element.main.humidity,
+              cloudCoverage: element.clouds.all,
+              windSpeed: element.wind.speed,
+            },
+            sunTime: {
+              sunrise,
+              sunset,
+            },
+            image: cityImg,
+            icon: element.weather[0].icon,
+          };
 
-            weatherArr.push(cityWeather);
-          }
+          weatherArr.push(cityWeather);
+          // }
         });
+
+        console.log(weatherArr);
 
         commit("setCityWeather", weatherArr);
       } catch (error) {
