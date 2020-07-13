@@ -14,7 +14,17 @@
         :class="{ active: !isActive }"
         @click="setFahrenheit"
       >Fahrenheit</h2>
-      <p>Trad</p>
+      <!-- <div id="google_translate_element"></div> -->
+
+      <div id="google_translate_element">
+        <div class="skiptranslate goog-te-gadget" style>
+          <div id=":1.targetLanguage">
+            <select class="goog-te-combo"></select>
+          </div>
+
+          <span style="white-space: nowrap;"></span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +72,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.goog-te-combo {
+  color: red;
+  display: none;
+}
+
 .navbar {
   display: flex;
   align-items: center;
