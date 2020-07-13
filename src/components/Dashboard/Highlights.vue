@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .highlights-container {
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   &__title {
     font-size: 1.7rem;

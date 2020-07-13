@@ -1,6 +1,5 @@
 <template>
   <div class="week-container" v-if="cityWeather">
-    <h1 class="week-container__title">Week</h1>
     <div class="week-container__cards">
       <div class="card" :key="weather.id" v-for="weather in cityWeather">
         <h1>{{ weather.date }}</h1>
@@ -27,17 +26,10 @@ export default {
 .week-container {
   align-self: flex-start;
   width: 100%;
-
-  &__title {
-    font-size: 1.6rem;
-    padding: 0 0 1rem 0.2rem;
-    background-image: linear-gradient(#8360c3, #2ebf91);
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
-  }
+  border: 1px solid red;
 
   &__cards {
+    height: 8.5rem;
     width: 100%;
     display: flex;
     justify-content: space-around;

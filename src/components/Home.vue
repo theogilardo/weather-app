@@ -8,7 +8,11 @@
       </section>
       <section class="dashboard">
         <Navbar></Navbar>
-        <Week></Week>
+        <div class="command">
+          <router-link class="command__link" to="/week">Timeline</router-link>
+          <router-link class="command__link" to="/timeline">Week</router-link>
+        </div>
+        <router-view></router-view>
         <highlights></highlights>
       </section>
     </div>
@@ -20,7 +24,6 @@ import Search from "./Today/Search.vue";
 import Today from "./Today/Today.vue";
 import Favorites from "./Today/Favorites.vue";
 import Navbar from "./Dashboard/Navbar.vue";
-import Week from "./Dashboard/Week.vue";
 import Highlights from "./Dashboard/Highlights.vue";
 
 export default {
@@ -29,7 +32,6 @@ export default {
     Search,
     Today,
     Navbar,
-    Week,
     Highlights,
     Favorites
   }
@@ -37,6 +39,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.command {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 0 0 1rem 0.2rem;
+    font-weight: 700;
+    background-image: linear-gradient(#8360c3, #2ebf91);
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+  }
+}
+
 .container {
   width: 90vw;
   height: 90vh;
@@ -64,9 +82,8 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem 2rem;
   background-color: #f3f3f3;
-  // background-color: #f6f6f8;
   flex: 2.5;
 }
 </style>
