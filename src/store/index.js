@@ -143,14 +143,14 @@ export default new Vuex.Store({
             .map((day) => day.main.temp_max)
             .sort((a, b) => b - a)[0];
 
-          let mixMaxDay = {};
+          let minMaxDay = {};
 
-          mixMaxDay = {
+          minMaxDay = {
             min: Math.trunc(minValue - 273.15),
             max: Math.trunc(maxValue - 273.15),
           };
 
-          minMaxList[`${listDay[i]}`] = mixMaxDay;
+          minMaxList[`${listDay[i]}`] = minMaxDay;
         }
 
         data.list.map((element, index) => {
@@ -193,7 +193,6 @@ export default new Vuex.Store({
               icon: element.weather[0].icon,
             };
 
-            console.log(weatherArr);
             weatherArr.push(cityWeather);
           }
         });
