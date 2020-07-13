@@ -4,8 +4,8 @@
     <div class="highlights-container__cards" v-if="cityWeather">
       <div class="card">
         <h1 class="card__title">Min/Max °C</h1>
-        <p>{{ Math.trunc(minMaxTemp.min) }}°</p>
-        <p>{{ Math.trunc(minMaxTemp.max) }}°</p>
+        <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
+        <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>

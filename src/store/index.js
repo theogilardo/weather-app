@@ -91,65 +91,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async fetchDataCurrentDay({ commit }, city) {
-      try {
-        const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
-        );
-        const data = await response.json();
-
-        const fullArr = [];
-
-        data.list.map((element) => {
-          const dateApiFormatted = element.dt_txt.substring(0, 10);
-          const dayIndex = new Date(dateApiFormatted).getDay();
-          const days = [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ];
-
-          const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
-
-          const newObj = {
-            day: weekDay,
-            min: element.main.temp_min - 273.15,
-            max: element.main.temp_max - 273.15,
-          };
-
-          fullArr.push(newObj);
-        });
-
-        const findCurrentDayArr = fullArr.filter(
-          (day) => day.day === fullArr[0].day
-        );
-        console.log(findCurrentDayArr);
-
-        const minValue = findCurrentDayArr
-          .map((day) => Math.trunc(day.min))
-          .sort((a, b) => a - b)[0];
-        console.log(minValue);
-
-        const maxValue = findCurrentDayArr
-          .map((day) => Math.trunc(day.max))
-          .sort((a, b) => b - a)[0];
-        console.log(maxValue);
-
-        const minMax = {
-          min: minValue,
-          max: maxValue,
-        };
-
-        commit("setminMaxTemp", minMax);
-      } catch (error) {
-        alert("Please enter a valid city.");
-      }
-    },
-
     async fetchCityWeather({ commit }, city) {
       try {
         const response = await fetch(
@@ -166,9 +107,9 @@ export default new Vuex.Store({
         const dataImg = await responseImg.json();
         const cityImg = dataImg.results[0].urls.raw;
 
-        data.list.map((element, index) => {
-          // Set day of the week
-          const dateApiFormatted = element.dt_txt.substring(0, 10);
+        // Set Date for all
+        data.list.forEach((timestamp) => {
+          const dateApiFormatted = timestamp.dt_txt.substring(0, 10);
           const dayIndex = new Date(dateApiFormatted).getDay();
           const days = [
             "Monday",
@@ -181,7 +122,28 @@ export default new Vuex.Store({
           ];
 
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
+          timestamp.dt_txt = weekDay;
+        });
 
+        // Set min/max values
+        const findCurrentDayArr = data.list.filter(
+          (timestamp) => timestamp.dt_txt === data.list[0].dt_txt
+        );
+
+        const minValue = findCurrentDayArr
+          .map((day) => day.main.temp_min)
+          .sort((a, b) => a - b)[0];
+
+        const maxValue = findCurrentDayArr
+          .map((day) => day.main.temp_max)
+          .sort((a, b) => b - a)[0];
+
+        const minMax = {
+          min: minValue - 273.15,
+          max: maxValue - 273.15,
+        };
+
+        data.list.map((element, index) => {
           // Set time
           function setTime(timestamp) {
             const date = new Date(timestamp * 1000);
@@ -190,20 +152,23 @@ export default new Vuex.Store({
             return hours + ":" + minutes.substr(-2);
           }
 
+          console.log(minMax);
+
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
 
           if (index === 0 || index % 8 === 0) {
             const cityWeather = {
-              date: weekDay,
+              date: element.dt_txt,
               location: {
                 name: data.city.name,
                 country: data.city.country,
               },
               temperature: {
                 main: element.main.temp - 273.15,
-                min: element.main.temp_min - 273.15,
-                max: element.main.temp_max - 273.15,
+                // min: element.main.temp_min - 273.15,
+                // max: element.main.temp_max - 273.15,
+                minmax: minMax,
               },
               highlight: {
                 main: element.weather[0].main,
@@ -223,14 +188,14 @@ export default new Vuex.Store({
             };
 
             // console.log(weatherArr);
-
             weatherArr.push(cityWeather);
           }
         });
 
         commit("setCityWeather", weatherArr);
       } catch (error) {
-        alert("Please enter a valid city.");
+        alert(error);
+        // alert("Please enter a valid city.");
       }
     },
   },
