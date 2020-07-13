@@ -10,8 +10,7 @@
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
         <img class="card__img" src="../../assets/sunset.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.sunTime.sunrise}}</p>
-        <p class="card__text">{{ cityWeather.sunTime.sunset}}</p>
+        <p class="card__text">{{ cityWeather.sunTime.sunrise}} | {{ cityWeather.sunTime.sunset}}</p>
       </div>
       <div class="card">
         <h1 class="card__title">Pressure</h1>
@@ -84,7 +83,7 @@ export default {
     justify-content: center;
     height: 100%;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.6rem;
     border: none;
     background-color: white;
     border-radius: 10px;
