@@ -5,7 +5,10 @@
       :src="require(`../../assets/${cityWeather.icon}.png`)"
       alt="Weather icon"
     />
-    <h1 class="current-day__temperature">{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
+    <h1 class="current-day__temperature">
+      {{ Math.trunc(cityWeather.temperature.main) }}
+      <span>°</span>
+    </h1>
     <h2 class="current-day__date">{{ cityWeather.date }}</h2>
     <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
     <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
@@ -83,6 +86,7 @@ export default {
   }
 
   &__temperature {
+    position: relative;
     font-size: 3rem;
   }
 
@@ -138,5 +142,11 @@ export default {
       color: white;
     }
   }
+}
+
+span {
+  position: absolute;
+  top: 0;
+  right: -22px;
 }
 </style>

@@ -3,8 +3,11 @@
     <div class="week-container__cards">
       <div class="week-container__card" v-for="timeline in getTimeline" :key="timeline.id">
         <img :src="require(`../../assets/${timeline.icon}.png`)" alt="Weather icon" />
-        <h1>{{Math.trunc(timeline.temperature.main)}}°</h1>
-        <span>{{timeline.time}}</span>
+        <h1 class="week-container__card__temp">
+          {{Math.trunc(timeline.temperature.main)}}
+          <span>°</span>
+        </h1>
+        <h3 class="week-container__card__time">{{timeline.time}}</h3>
       </div>
     </div>
   </div>
@@ -46,11 +49,12 @@ export default {
     margin: 0 0.4rem;
     text-align: center;
 
-    h1 {
+    &__temp {
+      position: relative;
       font-size: 1.1rem;
     }
 
-    span {
+    &__time {
       font-size: 0.6rem;
       opacity: 0.6;
     }
@@ -61,5 +65,11 @@ export default {
       text-align: center;
     }
   }
+}
+
+span {
+  position: absolute;
+  top: 0;
+  right: -8px;
 }
 </style>
