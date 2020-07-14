@@ -26,8 +26,6 @@ export default new Vuex.Store({
       return currentFilter;
     },
     getWeekWeather(state) {
-      console.log(state.cityWeather);
-
       const testArr = [];
       state.cityWeather.map((el, index) => {
         if (index === 0 || index % 8 === 0) {
@@ -196,7 +194,6 @@ export default new Vuex.Store({
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
 
-          // if (index === 0 || index % 8 === 0) {
           const cityWeather = {
             date: element.dt_txt,
             time: element.time,
@@ -226,10 +223,9 @@ export default new Vuex.Store({
           };
 
           weatherArr.push(cityWeather);
-          // }
         });
 
-        // console.log(weatherArr);
+        console.log(weatherArr);
 
         commit("setCityWeather", weatherArr);
       } catch (error) {

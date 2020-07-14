@@ -2,10 +2,17 @@
   <div class="highlights-container">
     <h1 class="highlights-container__title">Today's highlights</h1>
     <div class="highlights-container__cards" v-if="cityWeather">
-      <div class="card">
-        <h1 class="card__title">Min/Max °C</h1>
-        <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
-        <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
+      <div class="card--minmax">
+        <!-- <h1 class="card--minmax__title">Min/Max °C</h1> -->
+        <div class="card--minmax__temp card--minmax__temp--min">
+          <img class="card--minmax__icon" src="../../assets/cold.png" alt="Cold icon" />
+          <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
+        </div>
+        <div class="card--minmax__temp card--minmax__temp--max">
+          <img class="card--minmax__icon" src="../../assets/hot.png" alt="Hot icon" />
+
+          <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
+        </div>
       </div>
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
@@ -88,6 +95,63 @@ export default {
     background-color: white;
     border-radius: 10px;
     text-align: center;
+
+    &--minmax {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      // flex-direction: column;
+      // padding: 0.6rem;
+      border: none;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+
+      &__icon {
+        width: 50px;
+        transform: translateX(5px);
+        margin-bottom: 0.4rem;
+      }
+
+      &__title {
+        width: 100%;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.1rem;
+      }
+
+      &__temp {
+        width: 100%;
+        height: 100%;
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 1.2rem;
+        // border: 1px solid red;
+
+        &--min {
+          // background-color: rgba(129, 170, 216, 0.308);
+          background-image: linear-gradient(#72edf233, #5151e533);
+          color: #4893ff;
+          font-weight: 700;
+        }
+
+        &--max {
+          // background-color: rgba(212, 101, 101, 0.308);
+          background-image: linear-gradient(#fdd81933, #e8050533);
+          // background-color: rgba(212, 101, 101, 0.308);
+          color: #f95e6e;
+          font-weight: 700;
+        }
+      }
+    }
 
     &__title {
       font-size: 1.1rem;
