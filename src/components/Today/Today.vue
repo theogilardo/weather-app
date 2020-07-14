@@ -1,17 +1,21 @@
 <template>
   <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
+    <div class="current-day__box">
+      <h2 class="current-day__date">{{ cityWeather.date }}</h2>
+      <!-- <p class="current-day__box__information">{{ cityWeather.highlight.main }}</p> -->
+    </div>
+    <p class="current-day__box__information">"{{ cityWeather.highlight.description }}"</p>
     <img
       class="current-day__weather-icon"
       :src="require(`../../assets/${cityWeather.icon}.png`)"
       alt="Weather icon"
     />
-    <h1 class="current-day__temperature">
-      {{ Math.trunc(cityWeather.temperature.main) }}
-      <span>°</span>
-    </h1>
-    <h2 class="current-day__date">{{ cityWeather.date }}</h2>
-    <p class="current-day__information">{{ cityWeather.highlight.main }}</p>
-    <p class="current-day__information">{{ cityWeather.highlight.description }}</p>
+    <div class="current-day__temperature">
+      <h1>
+        {{ Math.trunc(cityWeather.temperature.main) }}°
+        <!-- <span>°</span> -->
+      </h1>
+    </div>
     <div class="current-day__city">
       <img class="current-day__city__img" :src="cityWeather.image" alt="Photo of city" />
       <a @click="storeCity(cityWeather.location.name)">
@@ -74,28 +78,62 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 0.3rem 1rem 1.5rem 1rem;
 
   &__weather-icon {
-    width: 150px;
-    margin-bottom: 2rem;
-  }
-
-  &__date {
-    margin-bottom: 2rem;
+    width: 8rem;
+    margin-bottom: 1rem;
+    margin-top: 1.2rem;
   }
 
   &__temperature {
     position: relative;
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    width: 8rem;
+    height: 8rem;
+    transform: translateY(19px);
+    text-align: center;
+    background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+
+    h1 {
+      font-size: 3.8rem;
+      color: #323131;
+      // transform: translateX(4px);
+      transform: translate(8px, 4px);
+    }
+  }
+
+  &__date {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__box {
+    // transform: translateY(1.5rem);
+    text-align: center;
+
+    &__information {
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+    }
   }
 
   &__city {
     position: relative;
     z-index: 4;
     margin-top: auto;
+    transform: translateY(8px);
     width: 95%;
-    margin: 3rem 0;
+    // margin: 3rem 0;
     border-radius: 10px;
     overflow: hidden;
     height: 8rem;
@@ -145,8 +183,13 @@ export default {
 }
 
 span {
+  // position: absolute;
+  // top: 0;
+  // right: -20px;
   position: absolute;
-  top: 0;
-  right: -22px;
+  top: 26;
+  right: 12px;
+  color: #323131;
+  font-size: 45spx;
 }
 </style>

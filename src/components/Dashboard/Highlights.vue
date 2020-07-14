@@ -14,9 +14,22 @@
           <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
         </div>
       </div>
+      <!-- <div class="card--suntime">
+        <h1 class="card__title">Sunrise/Sunset</h1>
+        <div class="test">
+          <div class="card--suntime__box">
+            <img class="card--suntime__img" src="../../assets/sunrise.png" alt="weather icon" />
+            <p class="card__text">{{ cityWeather.sunTime.sunrise}}</p>
+          </div>
+          <div class="card--suntime__box">
+            <img class="card--suntime__img" src="../../assets/sunset.png" alt="weather icon" />
+            <p class="card__text">{{ cityWeather.sunTime.sunset}}</p>
+          </div>
+        </div>
+      </div>-->
       <div class="card">
         <h1 class="card__title">Sunrise/Sunset</h1>
-        <img class="card__img" src="../../assets/sunset.png" alt="weather icon" />
+        <img class="card__img" src="../../assets/sunset1.png" alt="weather icon" />
         <p class="card__text">{{ cityWeather.sunTime.sunrise}} | {{ cityWeather.sunTime.sunset}}</p>
       </div>
       <div class="card">
@@ -63,6 +76,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.test {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
 .highlights-container {
   margin-top: 1rem;
 
@@ -150,6 +169,34 @@ export default {
           color: #f95e6e;
           font-weight: 700;
         }
+      }
+    }
+
+    &--suntime {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      height: 100%;
+      // flex-direction: column;
+      // padding: 0.6rem;
+      border: none;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+
+      &__box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      &__img {
+        width: 35px;
+        margin: 0.7rem 0;
       }
     }
 
