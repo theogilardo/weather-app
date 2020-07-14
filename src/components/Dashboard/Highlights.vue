@@ -98,7 +98,7 @@ export default {
     justify-content: center;
     height: 100%;
     flex-direction: column;
-    padding: 0.6rem;
+    padding: 1rem;
     border: none;
     background-color: white;
     border-radius: 10px;

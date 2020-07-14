@@ -86,6 +86,7 @@ export default {
 .command {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 
   &__link {
     text-decoration: none;

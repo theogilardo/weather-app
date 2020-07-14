@@ -51,7 +51,7 @@ export default {
 
     &__temp {
       position: relative;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     &__time {
