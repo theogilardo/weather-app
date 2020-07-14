@@ -16,9 +16,12 @@ export default new Vuex.Store({
       return state.minMaxTemp;
     },
     getCityWeather(state) {
+      console.log(state.cityWeather);
       return state.cityWeather;
     },
     getWeekWeather(state) {
+      console.log(state.cityWeather);
+
       const testArr = [];
       state.cityWeather.map((el, index) => {
         if (index === 0 || index % 8 === 0) {
@@ -26,7 +29,7 @@ export default new Vuex.Store({
         }
       });
 
-      console.log(testArr);
+      // console.log(testArr);
       return testArr;
     },
     getShowFavorites(state) {
@@ -41,17 +44,23 @@ export default new Vuex.Store({
   },
   mutations: {
     setCelsius(state) {
-      state.cityWeather.forEach((el) => {
+      state.cityWeather.forEach((el, index) => {
         el.temperature.main = ((el.temperature.main - 32) * 5) / 9;
-        el.temperature.minmax.min = ((el.temperature.minmax.min - 32) * 5) / 9;
-        el.temperature.minmax.max = ((el.temperature.minmax.max - 32) * 5) / 9;
+        if (index === 0 || index % 8 === 0) {
+          el.temperature.minmax.min =
+            ((el.temperature.minmax.min - 32) * 5) / 9;
+          el.temperature.minmax.max =
+            ((el.temperature.minmax.max - 32) * 5) / 9;
+        }
       });
     },
     setFahrenheit(state) {
-      state.cityWeather.forEach((el) => {
+      state.cityWeather.forEach((el, index) => {
         el.temperature.main = (el.temperature.main * 9) / 5 + 32;
-        el.temperature.minmax.min = (el.temperature.minmax.min * 9) / 5 + 32;
-        el.temperature.minmax.max = (el.temperature.minmax.max * 9) / 5 + 32;
+        if (index === 0 || index % 8 === 0) {
+          el.temperature.minmax.min = (el.temperature.minmax.min * 9) / 5 + 32;
+          el.temperature.minmax.max = (el.temperature.minmax.max * 9) / 5 + 32;
+        }
       });
     },
     refreshCities(state) {
@@ -215,7 +224,7 @@ export default new Vuex.Store({
           // }
         });
 
-        console.log(weatherArr);
+        // console.log(weatherArr);
 
         commit("setCityWeather", weatherArr);
       } catch (error) {

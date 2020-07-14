@@ -34,7 +34,6 @@ export default {
   methods: {
     activeTrad() {
       this.tradActive = !this.tradActive;
-      console.log(this.tradActive);
     },
     setCelsius() {
       if (this.celsiusActive === false) {
