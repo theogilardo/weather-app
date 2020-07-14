@@ -100,7 +100,7 @@ export default {
 
     h1 {
       font-size: 3.8rem;
-      color: #323131;
+      color: white;
       transform: translate(8px, 4px);
     }
   }

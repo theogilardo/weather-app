@@ -66,22 +66,22 @@ export default {
   opacity: 1;
 }
 
-.slide-enter {
-  opacity: 0;
-}
+// .slide-enter {
+//   opacity: 0;
+// }
 
-.slide-enter-active {
-  transition: opacity 1s;
-}
+// .slide-enter-active {
+//   transition: opacity 1s;
+// }
 
-.fade-leave {
-  // opacity: 1;s
-}
+// .fade-leave {
+//   // opacity: 1;s
+// }
 
-.fade-leave-active {
-  transition: opacity 1s;
-  opacity: 0;
-}
+// .fade-leave-active {
+//   transition: opacity 1s;
+//   opacity: 0;
+// }
 
 .command {
   display: flex;
@@ -89,7 +89,7 @@ export default {
 
   &__link {
     text-decoration: none;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     margin: 0 0 1rem 0.2rem;
     font-weight: 700;
     background-image: linear-gradient(#8360c3, #2ebf91);
