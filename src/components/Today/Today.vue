@@ -83,7 +83,8 @@ export default {
   }
 
   &__temperature {
-    position: relative;
+    position: absolute;
+    top: 46%;
     z-index: 10;
     display: flex;
     align-items: center;
@@ -108,8 +109,7 @@ export default {
   &__date {
     font-size: 2rem;
     letter-spacing: 1px;
-    margin-top: -0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
   }
 
   &__box {
