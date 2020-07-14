@@ -9,8 +9,20 @@
       <section class="dashboard">
         <Navbar></Navbar>
         <div class="command">
-          <router-link class="command__link command__link--timeline" to="/timeline">Timeline</router-link>
-          <router-link class="command__link command__link--week" to="/week">Week</router-link>
+          <a @click="showLink = !showLink">
+            <router-link
+              :class="{ LinkTimeline: !showLink }"
+              class="command__link command__link--timeline"
+              to="/timeline"
+            >Timeline</router-link>
+          </a>
+          <a @click="showLink = !showLink">
+            <router-link
+              :class="{ LinkWeek: showLink }"
+              class="command__link command__link--week"
+              to="/week"
+            >Week</router-link>
+          </a>
         </div>
         <!-- <transition name="slide"> -->
         <router-view></router-view>
@@ -36,11 +48,24 @@ export default {
     Navbar,
     Highlights,
     Favorites
+  },
+  data() {
+    return {
+      showLink: false
+    };
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.command__link--week.LinkWeek {
+  opacity: 1;
+}
+
+.command__link--timeline.LinkTimeline {
+  opacity: 1;
+}
+
 .slide-enter {
   opacity: 0;
 }
@@ -74,6 +99,7 @@ export default {
 
     &--timeline {
       margin-right: 1rem;
+      opacity: 0.4;
     }
 
     &--week {
