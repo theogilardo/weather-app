@@ -90,7 +90,7 @@ export default {
   &__link {
     text-decoration: none;
     font-size: 1.6rem;
-    padding: 0 0 1rem 0.2rem;
+    margin: 0 0 1rem 0.2rem;
     font-weight: 700;
     background-image: linear-gradient(#8360c3, #2ebf91);
     background-clip: text;

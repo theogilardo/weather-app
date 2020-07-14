@@ -13,7 +13,7 @@
       <h1>{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
     </div>
     <div class="current-day__city">
-      <img class="current-day__city__img" :src="cityWeather.image" alt="Photo of city" />
+      <img class="current-day__city__img" :src="cityWeather.image" alt="City photo" />
       <a @click="storeCity(cityWeather.location.name)">
         <p class="current-day__city__add-to-fav">+</p>
       </a>

@@ -14,7 +14,7 @@
         :class="{ active: !isActive }"
         @click="setFahrenheit"
       >Fahrenheit</h2>
-      <h2 class="translate" @click="activeTrad">Translate</h2>
+      <h2 class="translate" @click="tradActive = !tradActive">Translate</h2>
     </div>
     <div :class="{showtrad: tradActive}" id="google_translate_element"></div>
   </div>
@@ -32,9 +32,6 @@ export default {
     };
   },
   methods: {
-    activeTrad() {
-      this.tradActive = !this.tradActive;
-    },
     setCelsius() {
       if (this.celsiusActive === false) {
         this.$store.commit("setCelsius");

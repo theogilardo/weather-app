@@ -4,45 +4,45 @@
     <div class="highlights-container__cards" v-if="cityWeather">
       <div class="card">
         <h1 class="card__title">Humidity</h1>
-        <img class="card__img" src="../../assets/humidity.png" alt="weather icon" />
+        <img class="card__img" src="../../assets/humidity.png" alt="Humidity weather icon" />
         <p class="card__text">{{ cityWeather.highlight.humidity }}%</p>
       </div>
 
       <div class="card">
         <h1 class="card__title">Pressure</h1>
-        <img class="card__img" src="../../assets/pressure.png" alt="weather icon" />
+        <img class="card__img" src="../../assets/pressure.png" alt="Pressure weather icon" />
         <p class="card__text">{{ cityWeather.highlight.pressure }}hPa</p>
       </div>
 
       <div class="card--minmax">
         <div class="card--minmax__temp card--minmax__temp--min">
-          <img class="card--minmax__icon" src="../../assets/cold.png" alt="Cold icon" />
+          <img class="card--minmax__icon" src="../../assets/cold.png" alt="Cold weather icon" />
           <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
         </div>
         <div class="card--minmax__temp card--minmax__temp--max">
-          <img class="card--minmax__icon" src="../../assets/hot.png" alt="Hot icon" />
+          <img class="card--minmax__icon" src="../../assets/hot.png" alt="Hot weather icon" />
 
           <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
         </div>
       </div>
       <div class="card">
         <h1 class="card__title">Cloud Coverage</h1>
-        <img class="card__img" src="../../assets/clouds.png" alt="weather icon" />
+        <img class="card__img" src="../../assets/clouds.png" alt="Cloud coverage weather icon" />
         <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}%</p>
       </div>
       <div class="card">
         <h1 class="card__title">Wind Speed</h1>
-        <img class="card__img" src="../../assets/wind.png" alt="weather icon" />
+        <img class="card__img" src="../../assets/wind.png" alt="Wind speed weather icon" />
         <p class="card__text">{{ cityWeather.highlight.windSpeed }}m/s</p>
       </div>
 
       <div class="card--suntime">
         <div class="card--suntime__box card--suntime__box--sunrise">
-          <img class="card--suntime__img" src="../../assets/sunrise.png" alt="weather icon" />
+          <img class="card--suntime__img" src="../../assets/sunrise.png" alt="Sunrise icon" />
           <p>{{ cityWeather.sunTime.sunrise}}</p>
         </div>
         <div class="card--suntime__box card--suntime__box--sunset">
-          <img class="card--suntime__img" src="../../assets/sunset.png" alt="weather icon" />
+          <img class="card--suntime__img" src="../../assets/sunset.png" alt="Sunset icon" />
           <p>{{ cityWeather.sunTime.sunset}}</p>
         </div>
       </div>
@@ -53,11 +53,6 @@
 <script>
 export default {
   name: "Highlights",
-  data() {
-    return {
-      dataAvailable: false
-    };
-  },
   computed: {
     cityWeather() {
       return this.$store.getters.getCityWeather[0];
