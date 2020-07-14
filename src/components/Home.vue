@@ -1,34 +1,36 @@
 <template>
   <div>
-    <div class="container">
-      <section class="current-day">
-        <search></search>
-        <today></today>
-        <favorites></favorites>
-      </section>
-      <section class="dashboard">
-        <Navbar></Navbar>
-        <div class="command">
-          <a @click="showLink = !showLink">
-            <router-link
-              :class="{ LinkTimeline: !showLink }"
-              class="command__link command__link--timeline"
-              to="/timeline"
-            >Timeline</router-link>
-          </a>
-          <a @click="showLink = !showLink">
-            <router-link
-              :class="{ LinkWeek: showLink }"
-              class="command__link command__link--week"
-              to="/week"
-            >Week</router-link>
-          </a>
-        </div>
-        <!-- <transition name="slide"> -->
-        <router-view></router-view>
-        <!-- </transition> -->
-        <highlights></highlights>
-      </section>
+    <div class="test">
+      <div class="container">
+        <section class="current-day">
+          <search></search>
+          <today></today>
+          <favorites></favorites>
+        </section>
+        <section class="dashboard">
+          <Navbar></Navbar>
+          <div class="command">
+            <a @click="showLink = !showLink">
+              <router-link
+                :class="{ LinkTimeline: !showLink }"
+                class="command__link command__link--timeline"
+                to="/timeline"
+              >Timeline</router-link>
+            </a>
+            <a @click="showLink = !showLink">
+              <router-link
+                :class="{ LinkWeek: showLink }"
+                class="command__link command__link--week"
+                to="/week"
+              >Week</router-link>
+            </a>
+          </div>
+          <!-- <transition name="slide"> -->
+          <router-view></router-view>
+          <!-- </transition> -->
+          <highlights></highlights>
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -83,36 +85,16 @@ export default {
 //   opacity: 0;
 // }
 
-.command {
+.test {
+  height: 100vh;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 0.5rem;
-
-  &__link {
-    text-decoration: none;
-    font-size: 1.7rem;
-    margin: 0 0 1rem 0.2rem;
-    font-weight: 700;
-    background-image: linear-gradient(#8360c3, #2ebf91);
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
-
-    &--timeline {
-      margin-right: 1rem;
-      opacity: 0.4;
-    }
-
-    &--week {
-      opacity: 0.4;
-    }
-  }
 }
 
 .container {
-  width: 90vw;
-  height: 92vh;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
   display: flex;
   background-color: #eee;
   justify-content: center;
@@ -139,5 +121,31 @@ export default {
   padding: 0.6rem 2rem 1rem 2rem;
   background-color: #f3f3f3;
   flex: 2.5;
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  &__link {
+    text-decoration: none;
+    font-size: 1.7rem;
+    margin: 0 0 1rem 0.2rem;
+    font-weight: 700;
+    background-image: linear-gradient(#8360c3, #2ebf91);
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+
+    &--timeline {
+      margin-right: 1rem;
+      opacity: 0.4;
+    }
+
+    &--week {
+      opacity: 0.4;
+    }
+  }
 }
 </style>
