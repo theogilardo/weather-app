@@ -77,8 +77,8 @@ export default {
   padding: 2rem 1rem;
 
   &__weather-icon {
-    width: 100px;
-    margin: 2rem;
+    width: 150px;
+    margin-bottom: 2rem;
   }
 
   &__date {

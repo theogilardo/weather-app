@@ -60,7 +60,7 @@ export default {
     }
 
     img {
-      width: 25px;
+      width: 40px;
       margin: 0.7rem 0;
       text-align: center;
     }
