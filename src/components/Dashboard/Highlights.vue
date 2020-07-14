@@ -15,7 +15,6 @@
       </div>
 
       <div class="card--minmax">
-        <!-- <h1 class="card--minmax__title">Min/Max °C</h1> -->
         <div class="card--minmax__temp card--minmax__temp--min">
           <img class="card--minmax__icon" src="../../assets/cold.png" alt="Cold icon" />
           <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
@@ -38,8 +37,6 @@
       </div>
 
       <div class="card--suntime">
-        <!-- <h1 class="card__title">Sunrise/Sunset</h1> -->
-        <!-- <div class="test"> -->
         <div class="card--suntime__box card--suntime__box--sunrise">
           <img class="card--suntime__img" src="../../assets/sunrise.png" alt="weather icon" />
           <p>{{ cityWeather.sunTime.sunrise}}</p>
@@ -48,13 +45,7 @@
           <img class="card--suntime__img" src="../../assets/sunset.png" alt="weather icon" />
           <p>{{ cityWeather.sunTime.sunset}}</p>
         </div>
-        <!-- </div> -->
       </div>
-      <!-- <div class="card">
-        <h1 class="card__title">Sunrise/Sunset</h1>
-        <img class="card__img" src="../../assets/sunset1.png" alt="weather icon" />
-        <p class="card__text">{{ cityWeather.sunTime.sunrise}} | {{ cityWeather.sunTime.sunset}}</p>
-      </div>-->
     </div>
   </div>
 </template>
@@ -124,31 +115,8 @@ export default {
       align-items: center;
       justify-content: space-around;
       height: 100%;
-      // flex-direction: column;
-      // padding: 0.6rem;
       border: none;
       background-color: white;
-      // background-image: linear-gradient(
-      //   to right,
-      //   #72edf233,
-      //   #5151e533,
-      //   #ff7b0033,
-      //   #ff000033
-      // );
-      // background: linear-gradient(
-      //   90deg,
-      //   rgba(153, 195, 250, 0.6516981792717087) 0%,
-      //   rgba(73, 182, 221, 0.5144432773109244) 9%,
-      //   rgba(251, 113, 68, 0.6881127450980392) 85%
-      // // );
-
-      // background: linear-gradient(
-      //   90deg,
-      //   rgba(153, 195, 250, 0.304359243697479) 0%,
-      //   rgba(73, 182, 221, 0.3295693277310925) 2%,
-      //   rgba(251, 113, 68, 0.3435749299719888) 86%
-      // );
-
       border-radius: 10px;
       overflow: hidden;
       text-align: center;
@@ -179,22 +147,14 @@ export default {
         font-size: 1.2rem;
         font-weight: 700;
 
-        // border: 1px solid red;
-
         &--min {
-          // background-color: rgba(129, 170, 216, 0.308);
-          // background-image: linear-gradient(#72edf233, #5151e533);
           background-color: white;
 
           color: #333;
         }
 
         &--max {
-          // background-color: rgba(212, 101, 101, 0.308);
-          // background-image: linear-gradient(#fdd81933, #e8050533);
-          background-color: #333333;
-
-          // background-color: rgba(212, 101, 101, 0.308);
+          background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
           color: white;
         }
       }
@@ -206,12 +166,7 @@ export default {
       align-items: center;
       justify-content: space-around;
       height: 100%;
-      // flex-direction: column;
-      // padding: 0.6rem;
       border: none;
-      // background-color: white;
-      // background-image: linear-gradient(to right, #f5621745, #0b486b45);
-
       border-radius: 10px;
       overflow: hidden;
       text-align: center;
@@ -233,7 +188,7 @@ export default {
         }
 
         &--sunset {
-          background-color: #333333;
+          background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
         }
       }
 

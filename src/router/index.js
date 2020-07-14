@@ -12,7 +12,7 @@ const routes = [
     name: "Home",
     component: Home,
     children: [
-      { path: "timeline", component: Timeline },
+      { path: "/timeline", component: Timeline },
       { path: "week", component: Week },
     ],
   },

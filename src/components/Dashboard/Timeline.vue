@@ -51,11 +51,11 @@ export default {
 
     &__temp {
       position: relative;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     &__time {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       opacity: 0.6;
     }
 

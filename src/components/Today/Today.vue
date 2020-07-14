@@ -2,7 +2,6 @@
   <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
     <div class="current-day__box">
       <h2 class="current-day__date">{{ cityWeather.date }}</h2>
-      <!-- <p class="current-day__box__information">{{ cityWeather.highlight.main }}</p> -->
     </div>
     <p class="current-day__box__information">"{{ cityWeather.highlight.description }}"</p>
     <img
@@ -11,10 +10,7 @@
       alt="Weather icon"
     />
     <div class="current-day__temperature">
-      <h1>
-        {{ Math.trunc(cityWeather.temperature.main) }}°
-        <!-- <span>°</span> -->
-      </h1>
+      <h1>{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
     </div>
     <div class="current-day__city">
       <img class="current-day__city__img" :src="cityWeather.image" alt="Photo of city" />
@@ -82,12 +78,13 @@ export default {
 
   &__weather-icon {
     width: 8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     margin-top: 1.2rem;
   }
 
   &__temperature {
     position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +101,6 @@ export default {
     h1 {
       font-size: 3.8rem;
       color: #323131;
-      // transform: translateX(4px);
       transform: translate(8px, 4px);
     }
   }
@@ -117,7 +113,6 @@ export default {
   }
 
   &__box {
-    // transform: translateY(1.5rem);
     text-align: center;
 
     &__information {
@@ -130,18 +125,16 @@ export default {
   &__city {
     position: relative;
     z-index: 4;
-    margin-top: auto;
     transform: translateY(8px);
-    width: 95%;
-    // margin: 3rem 0;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 8rem;
+    width: 100%;
+    height: 41%;
+    position: absolute;
+    bottom: 0;
 
     &__img {
-      border-radius: 10px;
       background-position: center;
       background-size: cover;
+      object-fit: cover;
       object-fit: cover;
       width: 100%;
       height: 100%;
@@ -183,9 +176,6 @@ export default {
 }
 
 span {
-  // position: absolute;
-  // top: 0;
-  // right: -20px;
   position: absolute;
   top: 26;
   right: 12px;

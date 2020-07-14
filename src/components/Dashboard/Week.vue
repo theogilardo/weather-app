@@ -47,7 +47,7 @@ export default {
     text-align: center;
 
     h1 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     p {

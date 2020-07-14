@@ -37,7 +37,6 @@ body {
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
-  /* background-image: linear-gradient(to right bottom, #a80262, #f90f42); */
   min-height: 100vh;
   width: 100%;
 }
