@@ -16,8 +16,14 @@ export default new Vuex.Store({
       return state.minMaxTemp;
     },
     getCityWeather(state) {
-      console.log(state.cityWeather);
       return state.cityWeather;
+    },
+    getTimeline(state) {
+      const currentDay = state.cityWeather.map((el) => el.date)[0];
+      const currentFilter = state.cityWeather.filter(
+        (el) => el.date === currentDay
+      );
+      return currentFilter;
     },
     getWeekWeather(state) {
       console.log(state.cityWeather);
@@ -29,7 +35,6 @@ export default new Vuex.Store({
         }
       });
 
-      // console.log(testArr);
       return testArr;
     },
     getShowFavorites(state) {

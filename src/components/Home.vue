@@ -9,8 +9,8 @@
       <section class="dashboard">
         <Navbar></Navbar>
         <div class="command">
-          <router-link class="command__link" to="/timeline">Timeline</router-link>
-          <router-link class="command__link" to="/week">Week</router-link>
+          <router-link class="command__link command__link--timeline" to="/timeline">Timeline</router-link>
+          <router-link class="command__link command__link--week" to="/week">Week</router-link>
         </div>
         <!-- <transition name="slide"> -->
         <router-view></router-view>
@@ -71,12 +71,20 @@ export default {
     background-clip: text;
     color: transparent;
     letter-spacing: 2px;
+
+    &--timeline {
+      margin-right: 1rem;
+    }
+
+    &--week {
+      opacity: 0.4;
+    }
   }
 }
 
 .container {
   width: 90vw;
-  height: 90vh;
+  height: 92vh;
   margin: 0 auto;
   display: flex;
   background-color: #eee;
@@ -101,7 +109,7 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 1rem 2rem;
+  padding: 0.6rem 2rem 1rem 2rem;
   background-color: #f3f3f3;
   flex: 2.5;
 }

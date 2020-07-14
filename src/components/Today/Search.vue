@@ -26,7 +26,6 @@ export default {
         alert("Please type a city.");
       } else {
         this.$store.dispatch("fetchCityWeather", this.searchQuery);
-        this.$store.dispatch("fetchDataCurrentDay", this.searchQuery);
         this.searchQuery = "";
       }
     }

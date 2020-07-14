@@ -1,29 +1,10 @@
 <template>
   <div class="week-container">
     <div class="week-container__cards">
-      <div>
-        <h1>Sunny</h1>
-        <img src="../../assets/01d.png" alt="Weather icon" />
-        <p>18°</p>
-        <span>{13°/ 24°</span>
-      </div>
-      <div>
-        <h1>Sunny</h1>
-        <img src="../../assets/01d.png" alt="Weather icon" />
-        <p>18°</p>
-        <span>{13°/ 24°</span>
-      </div>
-      <div>
-        <h1>Sunny</h1>
-        <img src="../../assets/01d.png" alt="Weather icon" />
-        <p>18°</p>
-        <span>{13°/ 24°</span>
-      </div>
-      <div>
-        <h1>Sunny</h1>
-        <img src="../../assets/01d.png" alt="Weather icon" />
-        <p>18°</p>
-        <span>{13°/ 24°</span>
+      <div class="week-container__card" v-for="timeline in getTimeline" :key="timeline.id">
+        <img :src="require(`../../assets/${timeline.icon}.png`)" alt="Weather icon" />
+        <h1>{{Math.trunc(timeline.temperature.main)}}°</h1>
+        <span>{{timeline.time}}</span>
       </div>
     </div>
   </div>
@@ -31,7 +12,12 @@
 
 <script>
 export default {
-  name: "Timeline"
+  name: "Timeline",
+  computed: {
+    getTimeline() {
+      return this.$store.getters.getTimeline;
+    }
+  }
 };
 </script>
 
@@ -47,7 +33,7 @@ export default {
     justify-content: space-around;
   }
 
-  .card {
+  &__card {
     width: 100%;
     display: flex;
     align-items: center;
@@ -64,21 +50,16 @@ export default {
       font-size: 1.1rem;
     }
 
-    p {
-      display: inline-block;
-      font-size: 0.9rem;
-    }
-
     span {
       font-size: 0.6rem;
       opacity: 0.6;
     }
-  }
 
-  img {
-    width: 25px;
-    margin: 0.7rem 0;
-    text-align: center;
+    img {
+      width: 25px;
+      margin: 0.7rem 0;
+      text-align: center;
+    }
   }
 }
 </style>
