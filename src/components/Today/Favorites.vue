@@ -59,6 +59,7 @@ export default {
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   transform: translateX(-300px);
   opacity: 0;
@@ -69,12 +70,12 @@ export default {
     background-size: cover;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   &__city {
     position: relative;
     height: 6rem;
-
     width: 70%;
     margin: 0.5rem;
     font-weight: 700;
@@ -93,6 +94,13 @@ export default {
 
     &:focus {
       outline: none;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__city {
+      width: 50%;
+      height: 4.5rem;
     }
   }
 

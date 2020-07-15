@@ -2,13 +2,13 @@
   <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
     <div class="current-day__box">
       <h2 class="current-day__date">{{ cityWeather.date }}</h2>
+      <p class="current-day__box__information">"{{ cityWeather.highlight.description }}"</p>
+      <img
+        class="current-day__weather-icon"
+        :src="require(`../../assets/${cityWeather.icon}.png`)"
+        alt="Weather icon"
+      />
     </div>
-    <p class="current-day__box__information">"{{ cityWeather.highlight.description }}"</p>
-    <img
-      class="current-day__weather-icon"
-      :src="require(`../../assets/${cityWeather.icon}.png`)"
-      alt="Weather icon"
-    />
     <div class="current-day__temperature">
       <h1>{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
     </div>
@@ -75,12 +75,28 @@ export default {
   align-items: center;
   flex-direction: column;
   padding: 0.3rem 1rem 1.5rem 1rem;
+  position: relative;
+
+  @media only screen and (max-width: 930px) {
+    .current-day {
+      flex-direction: row;
+      padding: 0;
+      margin-top: 2rem;
+    }
+  }
 
   &__weather-icon {
     width: 8rem;
     margin-bottom: 2rem;
     margin-top: 1.2rem;
   }
+
+  // @media only screen and (max-width: 930px) {
+  //   &__temperature {
+  //     left: 50%;
+  //     transform: translate(-50%, -50%) !important;
+  //   }
+  // }
 
   &__temperature {
     position: absolute;
@@ -106,10 +122,38 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 700px) {
+    &__temperature {
+      width: 6rem;
+      height: 6rem;
+    }
+
+    @media only screen and (max-width: 700px) {
+      h1 {
+        font-size: 3rem;
+        transform: translate(5px, 2px);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__temperature {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   &__date {
     font-size: 2rem;
     letter-spacing: 1px;
     margin-top: 1rem;
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__box {
+      flex: 1;
+    }
   }
 
   &__box {
@@ -123,7 +167,7 @@ export default {
   }
 
   &__city {
-    position: relative;
+    // position: relative;
     z-index: 4;
     transform: translateY(8px);
     width: 100%;
@@ -146,17 +190,31 @@ export default {
       right: 6px;
       z-index: 5;
       background-color: #33333399;
-      padding: 0.1rem 0.4rem;
+      width: 25px;
+      height: 25px;
       font-size: 14px;
       font-weight: 700;
       border-radius: 50%;
       border: 1px solid white;
       text-transform: uppercase;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.7s;
 
       &:hover {
         transform: translateY(-1.5px);
+      }
+    }
+
+    @media only screen and (max-width: 930px) {
+      &__add-to-fav {
+        font-size: 22px;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
       }
     }
 
@@ -171,6 +229,16 @@ export default {
       justify-content: center;
       background-color: #33333350;
       color: white;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__city {
+      transform: translateY(0);
+      position: relative;
+      height: 100%;
+      flex: 1;
+      clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
     }
   }
 }

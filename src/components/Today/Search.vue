@@ -46,9 +46,16 @@ export default {
 .search {
   margin: 1.5rem 1rem;
   position: relative;
+  z-index: 50;
   width: 100%;
   opacity: 1;
   transition: all 0.5s;
+
+  @media only screen and (max-width: 930px) {
+    &__input {
+      border-radius: 10px;
+    }
+  }
 
   &__input {
     padding: 0.5rem 2.5rem;
@@ -58,6 +65,13 @@ export default {
 
     &:focus {
       outline: none;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__btn {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   }
 

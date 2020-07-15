@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="test">
+    <div class="wrapper">
       <div class="container">
         <section class="current-day">
           <search></search>
@@ -85,16 +85,17 @@ export default {
 //   opacity: 0;
 // }
 
-.test {
-  height: 100vh;
+.wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .container {
-  width: 100%;
-  max-width: 1000px;
+  width: 95%;
+  max-width: 1100px;
+  height: 90%;
   display: flex;
   background-color: #eee;
   justify-content: center;
@@ -102,6 +103,20 @@ export default {
   overflow: hidden;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
   position: relative;
+}
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .container {
+    flex-direction: column;
+  }
 }
 
 .current-day {
@@ -112,6 +127,12 @@ export default {
   background-color: #323131;
   color: white;
   flex: 1;
+}
+
+@media only screen and (max-width: 930px) {
+  .current-day {
+    height: 22rem;
+  }
 }
 
 .dashboard {

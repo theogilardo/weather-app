@@ -120,6 +120,12 @@ export default {
   }
 }
 
+@media only screen and (max-width: 930px) {
+  .navbar {
+    margin-top: 1.5rem;
+  }
+}
+
 .active {
   opacity: 1;
 }
