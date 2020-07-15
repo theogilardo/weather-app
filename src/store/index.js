@@ -197,7 +197,7 @@ export default new Vuex.Store({
         }
 
         data.list.map((element) => {
-          // Set time
+          // Set Sunrise and Sunset time
           function setTime(timestamp) {
             const date = new Date(timestamp * 1000);
             const hours = date.getHours();
@@ -208,6 +208,7 @@ export default new Vuex.Store({
           const sunrise = setTime(data.city.sunrise);
           const sunset = setTime(data.city.sunset);
 
+          // Store all the data formated in a new object
           const cityWeather = {
             date: element.dt_txt,
             time: element.time,
@@ -236,6 +237,7 @@ export default new Vuex.Store({
             icon: element.weather[0].icon,
           };
 
+          // Store cityWeather object in weather array before commiting it to the state
           weatherArr.push(cityWeather);
         });
 
