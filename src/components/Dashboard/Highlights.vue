@@ -203,6 +203,8 @@ export default {
   }
 }
 
+// Media queries
+
 @media only screen and (max-width: 670px) {
   .highlights-container__cards {
     grid-template-columns: 1fr 1fr;

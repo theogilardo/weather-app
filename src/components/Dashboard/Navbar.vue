@@ -66,34 +66,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 670px) {
-  .remove {
-    display: none;
-  }
-}
-
-#google_translate_element {
-  opacity: 0;
-  width: 0%;
-  transform: translateX(100px);
-  text-align: right;
-  transition: opacity 0.5s linear, width 0.5s linear, transform 0.5s linear;
-}
-
-#google_translate_element.showtrad {
-  opacity: 1;
-  width: 25%;
-  transform: translateX(0);
-}
-
-@media only screen and (max-width: 670px) {
-  #google_translate_element.showtrad {
-    width: 50%;
-    opacity: 0.6;
-    margin-left: 2rem;
-  }
-}
-
 .translate {
   background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
   color: white;
@@ -138,6 +110,40 @@ export default {
   }
 }
 
+// Google Translate plugging
+#google_translate_element {
+  opacity: 0;
+  width: 0%;
+  transform: translateX(100px);
+  text-align: right;
+  transition: opacity 0.5s linear, width 0.5s linear, transform 0.5s linear;
+}
+
+#google_translate_element.showtrad {
+  opacity: 1;
+  width: 25%;
+  transform: translateX(0);
+}
+
+// Media queries
+@media only screen and (max-width: 930px) {
+  .navbar {
+    margin-top: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  #google_translate_element.showtrad {
+    width: 50%;
+    opacity: 0.6;
+    margin-left: 2rem;
+  }
+
+  .remove {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .navbar {
     font-size: 9px;
@@ -153,12 +159,6 @@ export default {
 @media only screen and (max-width: 320px) {
   .navbar {
     font-size: 5px;
-  }
-}
-
-@media only screen and (max-width: 930px) {
-  .navbar {
-    margin-top: 1.5rem;
   }
 }
 
