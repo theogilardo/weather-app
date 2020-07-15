@@ -82,7 +82,7 @@ export default {
     .current-day {
       flex-direction: row;
       padding: 0;
-      margin-top: 2rem;
+      // margin-top: 2rem;
     }
   }
 

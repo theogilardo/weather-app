@@ -1,8 +1,10 @@
 <template>
   <div class="navbar">
-    <a href="#" v-show="showFavoritesBtn" @click="showFavorites" class="navbar__fav">
-      <h2 :class="{ remove: tradActive }">Favorite Cities ({{ cityCount.length}}/5)</h2>
-    </a>
+    <div>
+      <a class="navbar__fav" href="#" v-show="showFavoritesBtn" @click="showFavorites">
+        <h2 :class="{ remove: tradActive }">Favorite Cities ({{ cityCount.length}}/5)</h2>
+      </a>
+    </div>
     <div class="navbar__commands">
       <h2
         class="navbar__commands__metrics"
@@ -115,6 +117,7 @@ export default {
     flex: 1;
     text-decoration: none;
     color: #333;
+    position: relative;
   }
 
   &__commands {

@@ -105,7 +105,7 @@ export default {
   position: relative;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 930px) {
   .container {
     width: 100%;
     height: 100%;
