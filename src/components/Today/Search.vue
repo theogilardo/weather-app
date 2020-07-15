@@ -51,12 +51,6 @@ export default {
   opacity: 1;
   transition: all 0.5s;
 
-  @media only screen and (max-width: 930px) {
-    &__input {
-      border-radius: 10px;
-    }
-  }
-
   &__input {
     padding: 0.5rem 2.5rem;
     height: 100%;
@@ -65,13 +59,6 @@ export default {
 
     &:focus {
       outline: none;
-    }
-  }
-
-  @media only screen and (max-width: 930px) {
-    &__btn {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
     }
   }
 
@@ -91,7 +78,19 @@ export default {
   }
 }
 
+// Media queries
 @media only screen and (max-width: 930px) {
+  .search {
+    &__input {
+      border-radius: 10px;
+    }
+
+    &__btn {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+
   div {
     position: absolute;
   }
