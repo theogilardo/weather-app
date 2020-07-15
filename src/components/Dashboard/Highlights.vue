@@ -83,6 +83,14 @@ export default {
     letter-spacing: 2px;
   }
 
+  @media only screen and (max-width: 450px) {
+    &__title {
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 1rem 0 1rem 0;
+    }
+  }
+
   &__cards {
     width: 100%;
     display: grid;
@@ -90,6 +98,13 @@ export default {
     grid-gap: 1rem;
     justify-content: center;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 670px) {
+    &__cards {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
   }
 
   .card {
@@ -155,6 +170,13 @@ export default {
       }
     }
 
+    @media only screen and (max-width: 670px) {
+      &--minmax {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+      }
+    }
+
     &--suntime {
       position: relative;
       display: flex;
@@ -190,6 +212,13 @@ export default {
       &__img {
         width: 35px;
         margin: 0.7rem 0;
+      }
+    }
+
+    @media only screen and (max-width: 670px) {
+      &--suntime {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
       }
     }
 

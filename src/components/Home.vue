@@ -144,6 +144,12 @@ export default {
   flex: 2.5;
 }
 
+@media only screen and (max-width: 450px) {
+  .dashboard {
+    padding: 0.6rem 2rem 2rem 2rem;
+  }
+}
+
 .command {
   display: flex;
   align-items: center;
@@ -167,6 +173,19 @@ export default {
     &--week {
       opacity: 0.4;
     }
+  }
+
+  @media only screen and (max-width: 450px) {
+    &__link {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .command {
+    justify-content: center;
+    margin-bottom: 1.5rem;
   }
 }
 </style>

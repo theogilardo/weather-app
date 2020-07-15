@@ -103,6 +103,13 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 670px) {
+    &__city {
+      width: 40%;
+      height: 4rem;
+    }
+  }
+
   &__text {
     cursor: pointer;
     position: absolute;

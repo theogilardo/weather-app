@@ -120,6 +120,18 @@ export default {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .navbar {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .navbar {
+    font-size: 7px;
+  }
+}
+
 @media only screen and (max-width: 930px) {
   .navbar {
     margin-top: 1.5rem;
