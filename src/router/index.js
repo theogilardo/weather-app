@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    redirect: "/timeline",
     name: "Home",
     component: Home,
     children: [

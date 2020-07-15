@@ -30,7 +30,6 @@ export default {
     height: 8.5rem;
     width: 100%;
     display: flex;
-    justify-content: space-around;
     overflow: auto;
   }
 
