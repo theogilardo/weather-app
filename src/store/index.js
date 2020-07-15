@@ -70,6 +70,7 @@ export default new Vuex.Store({
       state.cityFavorites = JSON.parse(localStorage.getItem("cityFavorites"));
     },
     setCityWeather(state, payload) {
+      localStorage.setItem("activeCity", JSON.stringify(payload));
       state.cityWeather = payload;
     },
     setminMaxTemp(state, payload) {
@@ -124,8 +125,6 @@ export default new Vuex.Store({
           `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
         );
         const data = await response.json();
-
-        console.log(data);
 
         const weatherArr = [];
         const days = [

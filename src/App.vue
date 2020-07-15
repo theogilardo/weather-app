@@ -8,7 +8,14 @@
 export default {
   name: "App",
   mounted() {
-    this.$store.dispatch("fetchCityWeather", "paris");
+    if (localStorage.getItem("activeCity")) {
+      const city = JSON.parse(localStorage.getItem("activeCity"))[0].location
+        .name;
+      // const cityFormatted = city[0].location.name;
+      this.$store.dispatch("fetchCityWeather", city);
+    } else {
+      this.$store.dispatch("fetchCityWeather", "paris");
+    }
   }
 };
 </script>
