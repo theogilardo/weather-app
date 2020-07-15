@@ -178,7 +178,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 930px) {
+  @media only screen and (max-width: 970px) {
     .current-day {
       flex-direction: row;
       padding: 0;

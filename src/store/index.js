@@ -27,6 +27,7 @@ export default new Vuex.Store({
     },
     getWeekWeather(state) {
       const week = [];
+      // Get each day of the week at a specific time (there are 8 time periods a day for a total of 5 days)
       state.cityWeather.map((day, index) => {
         if (index === 0 || index % 8 === 0) {
           week.push(day);

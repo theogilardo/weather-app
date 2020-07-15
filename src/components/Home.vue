@@ -86,7 +86,7 @@ export default {
   position: relative;
 }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 970px) {
   .container {
     width: 100%;
     height: 100%;
@@ -94,7 +94,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 970px) {
   .container {
     flex-direction: column;
   }
@@ -110,7 +110,7 @@ export default {
   flex: 1;
 }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 970px) {
   .current-day {
     height: 25rem;
   }

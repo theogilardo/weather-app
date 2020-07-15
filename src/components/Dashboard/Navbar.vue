@@ -126,7 +126,7 @@ export default {
 }
 
 // Media queries
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 970px) {
   .navbar {
     margin-top: 1.5rem;
   }

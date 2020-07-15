@@ -129,7 +129,7 @@ export default {
   }
 
   // Media queries
-  @media only screen and (max-width: 930px) {
+  @media only screen and (max-width: 970px) {
     &__city {
       width: 50%;
       height: 4.5rem;

@@ -79,7 +79,7 @@ export default {
 }
 
 // Media queries
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 970px) {
   .search {
     &__input {
       border-radius: 10px;
