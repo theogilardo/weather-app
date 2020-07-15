@@ -1,17 +1,17 @@
 <template>
   <div class="navbar">
     <a href="#" v-show="showFavoritesBtn" @click="showFavorites" class="navbar__fav">
-      <h2>Favorite Cities ({{ cityCount.length}}/5)</h2>
+      <h2 :class="{ remove: tradActive }">Favorite Cities ({{ cityCount.length}}/5)</h2>
     </a>
     <div class="navbar__commands">
       <h2
         class="navbar__commands__metrics"
-        :class="{ active: isActive }"
+        :class="{ active: isActive, remove: tradActive  }"
         @click="setCelsius"
       >Celsius</h2>
       <h2
         class="navbar__commands__metrics"
-        :class="{ active: !isActive }"
+        :class="{ active: !isActive, remove: tradActive }"
         @click="setFahrenheit"
       >Fahrenheit</h2>
       <h2 class="translate" @click="tradActive = !tradActive">Translate</h2>
@@ -64,6 +64,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and (max-width: 670px) {
+  .remove {
+    display: none;
+  }
+}
+
 #google_translate_element {
   opacity: 0;
   width: 0%;
@@ -76,6 +82,14 @@ export default {
   opacity: 1;
   width: 25%;
   transform: translateX(0);
+}
+
+@media only screen and (max-width: 670px) {
+  #google_translate_element.showtrad {
+    width: 50%;
+    opacity: 0.6;
+    margin-left: 2rem;
+  }
 }
 
 .translate {
@@ -108,6 +122,7 @@ export default {
     align-items: center;
     justify-content: space-around;
     margin-left: auto;
+    transition: all 1.5s;
 
     & > h2:not(:last-child) {
       margin-right: 1.5rem;
