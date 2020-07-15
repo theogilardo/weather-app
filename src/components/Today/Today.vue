@@ -76,6 +76,7 @@ export default {
   flex-direction: column;
   padding: 0.3rem 1rem 1.5rem 1rem;
   position: relative;
+  z-index: 1;
 
   @media only screen and (max-width: 930px) {
     .current-day {
@@ -85,18 +86,18 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 670px) {
+    .current-day {
+      flex-direction: column;
+      margin-top: 0;
+    }
+  }
+
   &__weather-icon {
     width: 8rem;
     margin-bottom: 2rem;
     margin-top: 1.2rem;
   }
-
-  // @media only screen and (max-width: 930px) {
-  //   &__temperature {
-  //     left: 50%;
-  //     transform: translate(-50%, -50%) !important;
-  //   }
-  // }
 
   &__temperature {
     position: absolute;
@@ -122,6 +123,14 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 930px) {
+    &__temperature {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   @media only screen and (max-width: 700px) {
     &__temperature {
       width: 6rem;
@@ -136,11 +145,18 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 930px) {
+  @media only screen and (max-width: 670px) {
     &__temperature {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 80%;
+      width: 4rem;
+      height: 4rem;
+    }
+
+    @media only screen and (max-width: 670px) {
+      h1 {
+        font-size: 1.5rem;
+        transform: translate(2px, 2px);
+      }
     }
   }
 
@@ -167,7 +183,6 @@ export default {
   }
 
   &__city {
-    // position: relative;
     z-index: 4;
     transform: translateY(8px);
     width: 100%;
@@ -230,6 +245,14 @@ export default {
       background-color: #33333350;
       color: white;
     }
+
+    @media only screen and (max-width: 670px) {
+      &__name {
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 1rem;
+      }
+    }
   }
 
   @media only screen and (max-width: 930px) {
@@ -239,6 +262,18 @@ export default {
       height: 100%;
       flex: 1;
       clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    &__city {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      clip-path: none;
     }
   }
 }
