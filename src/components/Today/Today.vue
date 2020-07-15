@@ -82,6 +82,44 @@ export default {
     .current-day {
       flex-direction: row;
       padding: 0;
+
+      &__temperature {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &__box {
+        flex: 1;
+      }
+
+      &__city {
+        transform: translateY(0);
+        position: relative;
+        height: 100%;
+        flex: 1;
+        clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
+
+        &__add-to-fav {
+          font-size: 22px;
+          top: 15px;
+          right: 15px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .current-day__temperature {
+      width: 6rem;
+      height: 6rem;
+
+      h1 {
+        font-size: 3rem;
+        transform: translate(5px, 2px);
+      }
     }
   }
 
@@ -127,6 +165,16 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 420px) {
+    .current-day__city__add-to-fav {
+      font-size: 22px;
+      top: 88%;
+      right: 88%;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
   &__weather-icon {
     width: 8rem;
     margin-bottom: 2rem;
@@ -157,36 +205,10 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 930px) {
-    &__temperature {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  @media only screen and (max-width: 700px) {
-    &__temperature {
-      width: 6rem;
-      height: 6rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      transform: translate(5px, 2px);
-    }
-  }
-
   &__date {
     font-size: 2rem;
     letter-spacing: 1px;
     margin-top: 1rem;
-  }
-
-  @media only screen and (max-width: 930px) {
-    &__box {
-      flex: 1;
-    }
   }
 
   &__box {
@@ -239,26 +261,6 @@ export default {
       }
     }
 
-    @media only screen and (max-width: 930px) {
-      &__add-to-fav {
-        font-size: 22px;
-        top: 15px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    @media only screen and (max-width: 420px) {
-      &__add-to-fav {
-        font-size: 22px;
-        top: 88%;
-        right: 88%;
-        width: 35px;
-        height: 35px;
-      }
-    }
-
     &__name {
       position: absolute;
       top: 0;
@@ -270,16 +272,6 @@ export default {
       justify-content: center;
       background-color: #33333350;
       color: white;
-    }
-  }
-
-  @media only screen and (max-width: 930px) {
-    &__city {
-      transform: translateY(0);
-      position: relative;
-      height: 100%;
-      flex: 1;
-      clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
     }
   }
 }
