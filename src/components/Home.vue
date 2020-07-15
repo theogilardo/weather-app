@@ -131,15 +131,16 @@ export default {
 
 @media only screen and (max-width: 930px) {
   .current-day {
-    height: 22rem;
-  }
-}
-
-@media only screen and (max-width: 670px) {
-  .current-day {
+    // height: 22rem;
     height: 25rem;
   }
 }
+
+// @media only screen and (max-width: 670px) {
+//   .current-day {
+//     height: 25rem;
+//   }
+// }
 
 .dashboard {
   display: flex;

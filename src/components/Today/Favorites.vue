@@ -130,9 +130,8 @@ export default {
     z-index: 50;
     top: 5px;
     right: 7px;
-    font-size: 10px;
-    border-radius: 50%;
-    opacity: 0.3;
+    font-size: 13px;
+    opacity: 0.5;
     color: white;
     text-transform: uppercase;
     cursor: pointer;
@@ -140,6 +139,22 @@ export default {
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    &__delete {
+      opacity: 1;
+      top: 7px;
+      right: 8px;
+      border-radius: 5px;
+      color: white;
+      background-image: linear-gradient(to right bottom, #8360c3, #2ebf91);
+      padding: 0.4rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
     }
   }
 }

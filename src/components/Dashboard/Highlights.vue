@@ -236,5 +236,11 @@ export default {
       font-size: 0.9rem;
     }
   }
+
+  @media only screen and (max-width: 670px) {
+    .card {
+      padding: 0.5rem;
+    }
+  }
 }
 </style>

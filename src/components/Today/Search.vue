@@ -91,9 +91,15 @@ export default {
   }
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 930px) {
   div {
     position: absolute;
   }
 }
+
+// @media only screen and (max-width: 670px) {
+//   div {
+//     position: absolute;
+//   }
+// }
 </style>

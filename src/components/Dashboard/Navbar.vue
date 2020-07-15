@@ -2,7 +2,7 @@
   <div class="navbar">
     <div>
       <a class="navbar__fav" href="#" v-show="showFavoritesBtn" @click="showFavorites">
-        <h2 :class="{ remove: tradActive }">Favorite Cities ({{ cityCount.length}}/5)</h2>
+        <h2 :class="{ remove: tradActive }">My Cities ({{ cityCount.length}}/5)</h2>
       </a>
     </div>
     <div class="navbar__commands">
@@ -147,6 +147,12 @@ export default {
 @media only screen and (max-width: 440px) {
   .navbar {
     font-size: 7px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .navbar {
+    font-size: 5px;
   }
 }
 
