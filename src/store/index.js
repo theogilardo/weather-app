@@ -208,9 +208,6 @@ export default new Vuex.Store({
             return hours + ":" + minutes.substr(-2);
           }
 
-          const sunrise = setTime(data.city.sunrise);
-          const sunset = setTime(data.city.sunset);
-
           // Store all the data formated in a new object
           const cityWeather = {
             date: element.dt_txt,
@@ -233,8 +230,8 @@ export default new Vuex.Store({
               windSpeed: element.wind.speed,
             },
             sunTime: {
-              sunrise,
-              sunset,
+              sunrise: setTime(data.city.sunrise),
+              sunset: setTime(data.city.sunset),
             },
             image: cityImg,
             icon: element.weather[0].icon,
