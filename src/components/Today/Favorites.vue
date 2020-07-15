@@ -105,7 +105,7 @@ export default {
 
   @media only screen and (max-width: 670px) {
     &__city {
-      width: 60%;
+      width: 75%;
       height: 3.5rem;
     }
   }
@@ -155,6 +155,12 @@ export default {
       align-items: center;
       justify-content: center;
       font-weight: 700;
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    &__delete {
+      padding: 0.3rem 0.5rem;
     }
   }
 }
