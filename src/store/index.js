@@ -125,6 +125,8 @@ export default new Vuex.Store({
         );
         const data = await response.json();
 
+        console.log(data);
+
         const weatherArr = [];
         const days = [
           "Monday",
@@ -136,34 +138,45 @@ export default new Vuex.Store({
           "Sunday",
         ];
 
-        // Set city photos
+        // Fetch city photos from Unsplash API
         const responseImg = await fetch(
           `https://api.unsplash.com/search/photos?query=${city}&client_id=WlqNLtGT_QMVB2xvS8oyVo6WRZpNf3CL8VSDC5syfVk`
         );
         const dataImg = await responseImg.json();
         const cityImg = dataImg.results[0].urls.raw;
 
-        // Set Date for all
+        // Format Date from API "2020-07-11 21:00:00"
         data.list.forEach((timestamp) => {
           const dateApiFormatted = timestamp.dt_txt.substring(0, 10);
           const timeApiFormatted = timestamp.dt_txt.substring(11, 16);
           const dayIndex = new Date(dateApiFormatted).getDay();
           const weekDay = dayIndex - 1 >= 0 ? days[dayIndex - 1] : days[6];
+
+          // "2020-07-11 21:00:00" -> "Saturday"
           timestamp.dt_txt = weekDay;
+
+          // "2020-07-12 21:00:00" -> "21:00"
           timestamp.time = timeApiFormatted;
         });
 
         // Set Min/Max for each day
+        // Retrieve all days available in new array -> ["Monday", "Monday", "Tuesday"..]
         const listAllDays = data.list.map((day) => day.dt_txt);
+
+        // Format array for unique days
         const listDay = [...new Set(listAllDays)];
 
+        // Set new object where min/max will be stored
         const minMaxList = {};
 
+        // Loop for each day available in listDay array
         for (let i = 0; i < listDay.length; i++) {
+          // Pick one day available, collect all its timeperiods (12:00, 15:00, 18:00 ..)
           const findCurrentDayArr = data.list.filter(
             (timestamp) => timestamp.dt_txt === listDay[i]
           );
 
+          // and retrieve the min & max temperature from each timeperiod
           const minValue = findCurrentDayArr
             .map((day) => day.main.temp_min)
             .sort((a, b) => a - b)[0];
@@ -179,6 +192,7 @@ export default new Vuex.Store({
             max: maxValue - 273.15,
           };
 
+          // Store the min/max values for each day
           minMaxList[`${listDay[i]}`] = minMaxDay;
         }
 
