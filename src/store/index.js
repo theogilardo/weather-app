@@ -177,23 +177,25 @@ export default new Vuex.Store({
             (timestamp) => timestamp.dt_txt === listDay[i]
           );
 
-          // and retrieve the min & max temperature from each timeperiod
+          // Retrieve the min values from the timeperiods of the day and find the lowest number
           const minValue = findCurrentDayArr
             .map((day) => day.main.temp_min)
             .sort((a, b) => a - b)[0];
 
+          // Retrieve the max values from the timeperiods of the day and find the biggest number
           const maxValue = findCurrentDayArr
             .map((day) => day.main.temp_max)
             .sort((a, b) => b - a)[0];
 
           let minMaxDay = {};
 
+          // Convert from Kelvin to °C and store values in an object
           minMaxDay = {
             min: minValue - 273.15,
             max: maxValue - 273.15,
           };
 
-          // Store the min/max values for each day
+          // Store the min/max values for each day in the minMaxList object
           minMaxList[`${listDay[i]}`] = minMaxDay;
         }
 
