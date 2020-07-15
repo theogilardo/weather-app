@@ -34,6 +34,7 @@ export default {
     height: 8.5rem;
     display: flex;
     justify-content: space-around;
+    overflow: auto;
   }
 
   &__card {

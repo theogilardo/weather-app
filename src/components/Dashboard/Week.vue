@@ -31,6 +31,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    overflow: auto;
   }
 
   .card {
