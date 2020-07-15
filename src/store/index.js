@@ -225,8 +225,6 @@ export default new Vuex.Store({
           weatherArr.push(cityWeather);
         });
 
-        console.log(weatherArr);
-
         commit("setCityWeather", weatherArr);
       } catch (error) {
         alert("Please enter a valid city.");

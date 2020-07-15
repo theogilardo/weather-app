@@ -82,7 +82,6 @@ export default {
     .current-day {
       flex-direction: row;
       padding: 0;
-      // margin-top: 2rem;
     }
   }
 
@@ -143,11 +142,9 @@ export default {
       height: 6rem;
     }
 
-    @media only screen and (max-width: 700px) {
-      h1 {
-        font-size: 3rem;
-        transform: translate(5px, 2px);
-      }
+    h1 {
+      font-size: 3rem;
+      transform: translate(5px, 2px);
     }
   }
 
@@ -158,11 +155,9 @@ export default {
       height: 4rem;
     }
 
-    @media only screen and (max-width: 670px) {
-      h1 {
-        font-size: 1.5rem;
-        transform: translate(2px, 1px);
-      }
+    h1 {
+      font-size: 1.5rem;
+      transform: translate(2px, 1px);
     }
   }
 
@@ -205,7 +200,6 @@ export default {
     &__img {
       background-position: center;
       background-size: cover;
-      object-fit: cover;
       object-fit: cover;
       width: 100%;
       height: 100%;

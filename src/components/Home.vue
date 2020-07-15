@@ -25,9 +25,7 @@
               >Week</router-link>
             </a>
           </div>
-          <!-- <transition name="slide"> -->
           <router-view></router-view>
-          <!-- </transition> -->
           <highlights></highlights>
         </section>
       </div>
@@ -67,23 +65,6 @@ export default {
 .command__link--timeline.LinkTimeline {
   opacity: 1;
 }
-
-// .slide-enter {
-//   opacity: 0;
-// }
-
-// .slide-enter-active {
-//   transition: opacity 1s;
-// }
-
-// .fade-leave {
-//   // opacity: 1;s
-// }
-
-// .fade-leave-active {
-//   transition: opacity 1s;
-//   opacity: 0;
-// }
 
 .wrapper {
   min-height: 100vh;
@@ -131,16 +112,9 @@ export default {
 
 @media only screen and (max-width: 930px) {
   .current-day {
-    // height: 22rem;
     height: 25rem;
   }
 }
-
-// @media only screen and (max-width: 670px) {
-//   .current-day {
-//     height: 25rem;
-//   }
-// }
 
 .dashboard {
   display: flex;
