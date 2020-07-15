@@ -161,7 +161,7 @@ export default {
     @media only screen and (max-width: 670px) {
       h1 {
         font-size: 1.5rem;
-        transform: translate(2px, 2px);
+        transform: translate(2px, 1px);
       }
     }
   }
