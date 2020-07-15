@@ -90,4 +90,10 @@ export default {
     }
   }
 }
+
+@media only screen and (max-width: 670px) {
+  div {
+    position: absolute;
+  }
+}
 </style>

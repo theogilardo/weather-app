@@ -99,6 +99,12 @@ export default {
     margin-top: 1.2rem;
   }
 
+  @media only screen and (max-width: 670px) {
+    &__weather-icon {
+      width: 7rem;
+    }
+  }
+
   &__temperature {
     position: absolute;
     top: 46%;
@@ -147,7 +153,7 @@ export default {
 
   @media only screen and (max-width: 670px) {
     &__temperature {
-      top: 80%;
+      top: 84%;
       width: 4rem;
       height: 4rem;
     }
@@ -169,6 +175,12 @@ export default {
   @media only screen and (max-width: 930px) {
     &__box {
       flex: 1;
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    &__box {
+      margin-top: 3.5rem;
     }
   }
 
@@ -230,6 +242,16 @@ export default {
         right: 15px;
         width: 40px;
         height: 40px;
+      }
+    }
+
+    @media only screen and (max-width: 420px) {
+      &__add-to-fav {
+        font-size: 22px;
+        top: 88%;
+        right: 88%;
+        width: 35px;
+        height: 35px;
       }
     }
 

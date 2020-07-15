@@ -135,6 +135,12 @@ export default {
   }
 }
 
+@media only screen and (max-width: 670px) {
+  .current-day {
+    height: 25rem;
+  }
+}
+
 .dashboard {
   display: flex;
   justify-content: space-around;
