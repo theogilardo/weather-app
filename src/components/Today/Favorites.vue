@@ -96,20 +96,6 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 930px) {
-    &__city {
-      width: 50%;
-      height: 4.5rem;
-    }
-  }
-
-  @media only screen and (max-width: 670px) {
-    &__city {
-      width: 75%;
-      height: 3.5rem;
-    }
-  }
-
   &__text {
     cursor: pointer;
     position: absolute;
@@ -142,7 +128,13 @@ export default {
     }
   }
 
+  // Media queries
   @media only screen and (max-width: 930px) {
+    &__city {
+      width: 50%;
+      height: 4.5rem;
+    }
+
     &__delete {
       opacity: 1;
       top: 7px;
@@ -159,6 +151,11 @@ export default {
   }
 
   @media only screen and (max-width: 670px) {
+    &__city {
+      width: 65%;
+      height: 3.5rem;
+    }
+
     &__delete {
       padding: 0.3rem 0.5rem;
     }
