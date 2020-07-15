@@ -26,14 +26,14 @@ export default new Vuex.Store({
       return currentFilter;
     },
     getWeekWeather(state) {
-      const testArr = [];
-      state.cityWeather.map((el, index) => {
+      const week = [];
+      state.cityWeather.map((day, index) => {
         if (index === 0 || index % 8 === 0) {
-          testArr.push(el);
+          week.push(day);
         }
       });
 
-      return testArr;
+      return week;
     },
     getShowFavorites(state) {
       return state.showFavorites;
