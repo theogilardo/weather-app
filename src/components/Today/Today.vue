@@ -78,103 +78,6 @@ export default {
   position: relative;
   z-index: 1;
 
-  @media only screen and (max-width: 930px) {
-    .current-day {
-      flex-direction: row;
-      padding: 0;
-
-      &__temperature {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      &__box {
-        flex: 1;
-      }
-
-      &__city {
-        transform: translateY(0);
-        position: relative;
-        height: 100%;
-        flex: 1;
-        clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
-
-        &__add-to-fav {
-          font-size: 22px;
-          top: 15px;
-          right: 15px;
-          width: 40px;
-          height: 40px;
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 700px) {
-    .current-day__temperature {
-      width: 6rem;
-      height: 6rem;
-
-      h1 {
-        font-size: 3rem;
-        transform: translate(5px, 2px);
-      }
-    }
-  }
-
-  @media only screen and (max-width: 670px) {
-    .current-day {
-      flex-direction: column;
-      margin-top: 0;
-
-      &__weather-icon {
-        width: 7rem;
-      }
-
-      &__temperature {
-        top: 84%;
-        width: 4rem;
-        height: 4rem;
-
-        h1 {
-          font-size: 1.5rem;
-          transform: translate(2px, 1px);
-        }
-      }
-
-      &__box {
-        margin-top: 3.5rem;
-      }
-
-      &__city {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        clip-path: none;
-
-        &__name {
-          align-items: flex-end;
-          justify-content: flex-end;
-          padding: 1rem;
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 420px) {
-    .current-day__city__add-to-fav {
-      font-size: 22px;
-      top: 88%;
-      right: 88%;
-      width: 35px;
-      height: 35px;
-    }
-  }
-
   &__weather-icon {
     width: 8rem;
     margin-bottom: 2rem;
@@ -272,6 +175,103 @@ export default {
       justify-content: center;
       background-color: #33333350;
       color: white;
+    }
+  }
+
+  @media only screen and (max-width: 930px) {
+    .current-day {
+      flex-direction: row;
+      padding: 0;
+
+      &__temperature {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &__box {
+        flex: 1;
+      }
+
+      &__city {
+        transform: translateY(0);
+        position: relative;
+        height: 100%;
+        flex: 1;
+        clip-path: polygon(25% 0, 100% 0, 100% 100%, 25% 100%, 0 50%);
+
+        &__add-to-fav {
+          font-size: 22px;
+          top: 15px;
+          right: 15px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .current-day__temperature {
+      width: 6rem;
+      height: 6rem;
+
+      h1 {
+        font-size: 3rem;
+        transform: translate(5px, 2px);
+      }
+    }
+  }
+
+  @media only screen and (max-width: 670px) {
+    .current-day {
+      flex-direction: column;
+      margin-top: 0;
+
+      &__weather-icon {
+        width: 7rem;
+      }
+
+      &__temperature {
+        top: 84%;
+        width: 4rem;
+        height: 4rem;
+
+        h1 {
+          font-size: 1.5rem;
+          transform: translate(2px, 1px);
+        }
+      }
+
+      &__box {
+        margin-top: 3.5rem;
+      }
+
+      &__city {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        clip-path: none;
+
+        &__name {
+          align-items: flex-end;
+          justify-content: flex-end;
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 420px) {
+    .current-day__city__add-to-fav {
+      font-size: 22px;
+      top: 88%;
+      right: 88%;
+      width: 35px;
+      height: 35px;
     }
   }
 }
