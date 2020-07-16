@@ -124,7 +124,7 @@ export default new Vuex.Store({
     async fetchCityWeather({ commit }, city) {
       try {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
         );
         const data = await response.json();
 
