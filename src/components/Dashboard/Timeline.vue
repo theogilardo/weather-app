@@ -4,7 +4,7 @@
       <div class="week-container__card" v-for="timeline in getTimeline" :key="timeline.id">
         <img :src="require(`../../assets/${timeline.icon}.png`)" alt="Weather icon" />
         <h1 class="week-container__card__temp">
-          {{Math.trunc(timeline.temperature.main)}}
+          {{ timeline.temperature.main | trunc }}
           <span>°</span>
         </h1>
         <h3 class="week-container__card__time">{{timeline.time}}</h3>
@@ -14,13 +14,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Timeline",
-  computed: {
-    getTimeline() {
-      return this.$store.getters.getTimeline;
-    }
-  }
+  computed: mapGetters(["getTimeline"]),
 };
 </script>
 

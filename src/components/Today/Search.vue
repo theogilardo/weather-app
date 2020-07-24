@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="search" :class="{aniFavorites: showFavorites}">
+    <form class="search" :class="{aniFavorites: getShowFavorites}">
       <button @click.prevent="fetchCityWeather()" class="search__btn">Search</button>
       <input
         v-model="searchQuery"
@@ -13,11 +13,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Search",
   data() {
     return {
-      searchQuery: ""
+      searchQuery: "",
     };
   },
   methods: {
@@ -28,13 +30,9 @@ export default {
         this.$store.dispatch("fetchCityWeather", this.searchQuery);
         this.searchQuery = "";
       }
-    }
+    },
   },
-  computed: {
-    showFavorites() {
-      return this.$store.getters.getShowFavorites;
-    }
-  }
+  computed: mapGetters(["getShowFavorites"]),
 };
 </script>
 

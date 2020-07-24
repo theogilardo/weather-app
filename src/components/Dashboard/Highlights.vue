@@ -1,49 +1,49 @@
 <template>
   <div class="highlights-container">
     <h1 class="highlights-container__title">Today's highlights</h1>
-    <div class="highlights-container__cards" v-if="cityWeather">
+    <div class="highlights-container__cards" v-if="currentCityWeather">
       <div class="card">
         <h1 class="card__title">Humidity</h1>
         <img class="card__img" src="../../assets/humidity.png" alt="Humidity weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.humidity }}%</p>
+        <p class="card__text">{{ currentCityWeather.highlight.humidity }}%</p>
       </div>
 
       <div class="card">
         <h1 class="card__title">Pressure</h1>
         <img class="card__img" src="../../assets/pressure.png" alt="Pressure weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.pressure }}hPa</p>
+        <p class="card__text">{{ currentCityWeather.highlight.pressure }}hPa</p>
       </div>
 
       <div class="card--minmax">
         <div class="card--minmax__temp card--minmax__temp--min">
           <img class="card--minmax__icon" src="../../assets/cold.png" alt="Cold weather icon" />
-          <p>{{ Math.trunc(cityWeather.temperature.minmax.min) }}°</p>
+          <p>{{ currentCityWeather.temperature.minmax.min | trunc }}°</p>
         </div>
         <div class="card--minmax__temp card--minmax__temp--max">
           <img class="card--minmax__icon" src="../../assets/hot.png" alt="Hot weather icon" />
 
-          <p>{{ Math.trunc(cityWeather.temperature.minmax.max) }}°</p>
+          <p>{{ currentCityWeather.temperature.minmax.max | trunc }}°</p>
         </div>
       </div>
       <div class="card">
         <h1 class="card__title">Cloud Coverage</h1>
         <img class="card__img" src="../../assets/clouds.png" alt="Cloud coverage weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.cloudCoverage }}%</p>
+        <p class="card__text">{{ currentCityWeather.highlight.cloudCoverage }}%</p>
       </div>
       <div class="card">
         <h1 class="card__title">Wind Speed</h1>
         <img class="card__img" src="../../assets/wind.png" alt="Wind speed weather icon" />
-        <p class="card__text">{{ cityWeather.highlight.windSpeed }}m/s</p>
+        <p class="card__text">{{ currentCityWeather.highlight.windSpeed }}m/s</p>
       </div>
 
       <div class="card--suntime">
         <div class="card--suntime__box card--suntime__box--sunrise">
           <img class="card--suntime__img" src="../../assets/sunrise.png" alt="Sunrise icon" />
-          <p>{{ cityWeather.sunTime.sunrise}}</p>
+          <p>{{ currentCityWeather.sunTime.sunrise}}</p>
         </div>
         <div class="card--suntime__box card--suntime__box--sunset">
           <img class="card--suntime__img" src="../../assets/sunset.png" alt="Sunset icon" />
-          <p>{{ cityWeather.sunTime.sunset}}</p>
+          <p>{{ currentCityWeather.sunTime.sunset}}</p>
         </div>
       </div>
     </div>
@@ -51,16 +51,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Highlights",
-  computed: {
-    cityWeather() {
-      return this.$store.getters.getCityWeather[0];
-    },
-    minMaxTemp() {
-      return this.$store.getters.getMinMaxTemp;
-    }
-  }
+  computed: mapGetters(["currentCityWeather"]),
 };
 </script>
 

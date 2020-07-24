@@ -4,20 +4,18 @@
       <div class="card" :key="weather.id" v-for="weather in getWeekWeather">
         <h1>{{ weather.date }}</h1>
         <img :src="require(`../../assets/${weather.icon}.png`)" alt="Weather icon" />
-        <p>{{ Math.trunc(weather.temperature.minmax.min)}}°/{{ Math.trunc(weather.temperature.minmax.max)}}°</p>
+        <p>{{ weather.temperature.minmax.min | trunc }}°/{{ weather.temperature.minmax.max | trunc }}°</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Week",
-  computed: {
-    getWeekWeather() {
-      return this.$store.getters.getWeekWeather;
-    }
-  }
+  computed: mapGetters(["getWeekWeather"]),
 };
 </script>
 

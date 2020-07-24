@@ -18,6 +18,9 @@ export default new Vuex.Store({
     getCityWeather(state) {
       return state.cityWeather;
     },
+    currentCityWeather(state) {
+      return state.cityWeather[0];
+    },
     getTimeline(state) {
       // Get each time period of the current day
       const currentDay = state.cityWeather.map((el) => el.date)[0];

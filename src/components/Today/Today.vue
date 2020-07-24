@@ -1,41 +1,48 @@
 <template>
-  <div class="current-day" v-if="cityWeather" :class="{aniFavorites: showFavorites}">
+  <div class="current-day" v-if="currentCityWeather" :class="{aniFavorites: getShowFavorites}">
     <div class="current-day__box">
-      <h2 class="current-day__date">{{ cityWeather.date }}</h2>
-      <p class="current-day__box__information">"{{ cityWeather.highlight.description }}"</p>
+      <h2 class="current-day__date">{{ currentCityWeather.date }}</h2>
+      <p class="current-day__box__information">"{{ currentCityWeather.highlight.description }}"</p>
       <img
         class="current-day__weather-icon"
-        :src="require(`../../assets/${cityWeather.icon}.png`)"
+        :src="require(`../../assets/${currentCityWeather.icon}.png`)"
         alt="Weather icon"
       />
     </div>
     <div class="current-day__temperature">
-      <h1>{{ Math.trunc(cityWeather.temperature.main) }}°</h1>
+      <h1>{{ currentCityWeather.temperature.main | trunc }}°</h1>
     </div>
     <div class="current-day__city">
-      <img class="current-day__city__img" :src="cityWeather.image" alt="City photo" />
-      <a @click="storeCity(cityWeather.location.name)">
+      <img class="current-day__city__img" :src="currentCityWeather.image" alt="City photo" />
+      <a @click="storeCity(currentCityWeather.location.name)">
         <p class="current-day__city__add-to-fav">+</p>
       </a>
       <h2
         class="current-day__city__name"
-      >{{ cityWeather.location.name }} ({{ cityWeather.location.country }})</h2>
+      >{{ currentCityWeather.location.name }} ({{ currentCityWeather.location.country }})</h2>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Today",
+  computed: mapGetters([
+    "currentCityWeather",
+    "getCityFavorites",
+    "getShowFavorites",
+  ]),
   methods: {
     storeCity(cityName) {
-      const cityMatch = this.favoriteList.find(city => {
+      const cityMatch = this.getCityFavorites.find((city) => {
         return city.name === cityName;
       });
 
       if (cityMatch) {
         alert("City already added!");
-      } else if (this.favoriteList.length > 4) {
+      } else if (this.getCityFavorites.length > 4) {
         alert(
           "You have reached the maximum of cities that can be added to favorite"
         );
@@ -43,19 +50,8 @@ export default {
         this.$store.commit("addCityFavorite");
         this.$store.commit("setShowFavoritesBtn");
       }
-    }
+    },
   },
-  computed: {
-    cityWeather() {
-      return this.$store.getters.getCityWeather[0];
-    },
-    favoriteList() {
-      return this.$store.getters.getCityFavorites;
-    },
-    showFavorites() {
-      return this.$store.getters.getShowFavorites;
-    }
-  }
 };
 </script>
 

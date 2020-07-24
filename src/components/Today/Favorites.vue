@@ -1,6 +1,6 @@
 <template>
-  <div :class="{aniFavorites: showFavorites}" class="favorites">
-    <button v-for="favorite in cityFavorites" :key="favorite.id" class="favorites__city">
+  <div :class="{aniFavorites: getShowFavorites}" class="favorites">
+    <button v-for="favorite in getCityFavorites" :key="favorite.id" class="favorites__city">
       <img class="favorites__img" :src="`${favorite.img}`" alt="City photo" />
       <p @click="deleteCity(favorite.name)" class="favorites__delete">x</p>
       <h2
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Favorites",
   mounted() {
@@ -20,14 +22,7 @@ export default {
       this.$store.commit("refreshCities");
     }
   },
-  computed: {
-    showFavorites() {
-      return this.$store.getters.getShowFavorites;
-    },
-    cityFavorites() {
-      return this.$store.getters.getCityFavorites;
-    }
-  },
+  computed: mapGetters(["getShowFavorites", "getCityFavorites"]),
   methods: {
     deleteCity(cityName) {
       return this.$store.commit("removeCityFavorite", cityName);
@@ -35,8 +30,8 @@ export default {
     chooseCity(cityName) {
       this.$store.commit("setShowFavorites");
       return this.$store.dispatch("fetchCityWeather", cityName);
-    }
-  }
+    },
+  },
 };
 </script>
 
