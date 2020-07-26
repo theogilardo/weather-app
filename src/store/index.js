@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -126,10 +127,10 @@ export default new Vuex.Store({
   actions: {
     async fetchCityWeather({ commit }, city) {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
         );
-        const data = await response.json();
+        const data = await response.data;
 
         const weatherArr = [];
         const days = [
@@ -143,11 +144,11 @@ export default new Vuex.Store({
         ];
 
         // Fetch city photos from Unsplash API
-        const responseImg = await fetch(
+        const responseImg = await axios.get(
           `https://api.unsplash.com/search/photos?query=${city}&client_id=WlqNLtGT_QMVB2xvS8oyVo6WRZpNf3CL8VSDC5syfVk`
         );
-        const dataImg = await responseImg.json();
-        const cityImg = dataImg.results[0].urls.raw;
+        const dataImg = await responseImg;
+        const cityImg = dataImg.data.results[0].urls.raw;
 
         // Format Date from API "2020-07-11 21:00:00"
         data.list.forEach((timestamp) => {
