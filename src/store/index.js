@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cityFavorites: [],
     showFavorites: false,
     showFavoritesBtn: false,
+    isLoading: false,
   },
   getters: {
     getMinMaxTemp(state) {
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     getCityFavorites(state) {
       return state.cityFavorites;
+    },
+    isLoading(state) {
+      return state.isLoading;
     },
   },
   mutations: {
@@ -123,9 +127,12 @@ export default new Vuex.Store({
         state.showFavorites = false;
       }
     },
+    setInit(state) {
+      state.isLoading = true;
+    },
   },
   actions: {
-    async fetchCityWeather({ commit }, city) {
+    async fetchCityWeather({ state, commit }, city) {
       try {
         const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7e918318a291df997bd192ca77406428`
@@ -246,6 +253,11 @@ export default new Vuex.Store({
         });
 
         commit("setCityWeather", weatherArr);
+        if (state.isLoading) {
+          setInterval(() => {
+            state.isLoading = false;
+          }, 2500);
+        }
       } catch (error) {
         alert("Please enter a valid city.");
       }

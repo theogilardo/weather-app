@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrapper">
+    <div v-if="!isLoading" class="wrapper">
       <div class="container">
         <section class="current-day">
           <search></search>
@@ -15,19 +15,31 @@
                 :class="{ LinkTimeline: !showLink }"
                 class="command__link command__link--timeline"
                 to="/timeline"
-              >Timeline</router-link>
+                >Timeline</router-link
+              >
             </a>
             <a @click="showLink = !showLink">
               <router-link
                 :class="{ LinkWeek: showLink }"
                 class="command__link command__link--week"
                 to="/week"
-              >Week</router-link>
+                >Week</router-link
+              >
             </a>
           </div>
           <router-view></router-view>
           <highlights></highlights>
         </section>
+      </div>
+    </div>
+    <div v-else class="wrapper">
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
       </div>
     </div>
   </div>
@@ -47,13 +59,28 @@ export default {
     Today,
     Navbar,
     Highlights,
-    Favorites
+    Favorites,
+  },
+  mounted() {
+    this.$store.commit("setInit");
+    if (localStorage.getItem("activeCity")) {
+      const city = JSON.parse(localStorage.getItem("activeCity"))[0].location
+        .name;
+      this.$store.dispatch("fetchCityWeather", city);
+    } else {
+      this.$store.dispatch("fetchCityWeather", "paris");
+    }
   },
   data() {
     return {
-      showLink: false
+      showLink: false,
     };
-  }
+  },
+  computed: {
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
+  },
 };
 </script>
 
@@ -167,6 +194,94 @@ export default {
   .command {
     justify-content: center;
     margin-bottom: 1.5rem;
+  }
+}
+
+// Loading spinner
+
+.sk-chase {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:before {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: #fff;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2) {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3) {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4) {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5) {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6) {
+  animation-delay: -0.6s;
+}
+.sk-chase-dot:nth-child(1):before {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2):before {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3):before {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4):before {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5):before {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6):before {
+  animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.4);
+  }
+  100%,
+  0% {
+    transform: scale(1);
   }
 }
 </style>
