@@ -15,7 +15,7 @@
                 :class="{ LinkTimeline: !showLink }"
                 class="command__link command__link--timeline"
                 to="/timeline"
-                >Timelines</router-link
+                >Timeline</router-link
               >
             </a>
             <a @click="showLink = !showLink">
