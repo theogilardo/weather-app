@@ -11,7 +11,7 @@ Vue.filter("trunc", function(value) {
 });
 
 Vue.use(Hotjar, {
-  id: "2335217", // Hotjar Site ID
+  id: "2335462", // Hotjar Site ID
 });
 
 new Vue({
